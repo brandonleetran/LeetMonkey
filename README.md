@@ -42,7 +42,6 @@
 | **Framework**  | React                         |
 | **Language**   | TypeScript                    |
 | **Bundler**    | Vite                          |
-| **Runtime**    | bun                           |
 | **Styling**    | TailwindCSS v4                |
 | **Lint & Format** | ESLint + Prettier          |
 | **Analytics**  | Google Analytics 4            |
@@ -52,7 +51,6 @@
 ## 🏁 Getting Started
 ### Prerequisites
 
-- [bun](https://bun.sh/) (v1.0+)
 - Node.js (for Vercel builds)
 
 ### Install
@@ -62,13 +60,13 @@ git clone https://github.com/<your-org>/LeetMonkey.git
 cd LeetMonkey
 
 # install deps with bun
-bun install
+npm install
 ```
 
 ### Development
 ```bash
 # start dev server with HMR
-bun run dev
+npm run dev
 ```
 
 ### Build & Deploy
@@ -77,7 +75,6 @@ bun run dev
 bun run build
 
 # preview production build locally
-bun run preview
 Push to main (or your default branch) and Vercel will auto-deploy.
 ```
 
