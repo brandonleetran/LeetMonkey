@@ -1,13 +1,36 @@
-@layer theme, base, components, utilities;
-
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/preflight.css" layer(base);
-@import "tailwindcss/utilities.css" layer(utilities);
+@import "tailwindcss";
 
 @layer base {
     html, body, #root {
         height: 100vh;
         margin: 0;
         padding: 0;
+        font-family: monospace; /* Add font family */
+        background-color: #0d1117;
+        color: #c9d1d9;
     }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.8;
+        font-weight: normal;
+    }
+
+    code {
+        font-size: 1rem;
+        line-height: 1.8;
+        font-weight: normal;
+        color: #fff;
+        background-color: rgb(64, 64, 64);
+        padding: 1px;
+        border: 1px solid rgb(64, 64, 64);
+        border-radius: 3px;
+
+    }
+}
+
+.glassy {
+    background: rgba( 255, 255, 255, 0 );
+    backdrop-filter: blur( 20px );
+    -webkit-backdrop-filter: blur( 20px );
 }
