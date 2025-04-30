@@ -8,7 +8,10 @@ function BuyMeACoffee() {
           className="max-w-[250px] sm:block hidden rounded-lg"
         />
       </a>
-      <a href="https://www.buymeacoffee.com/brandonleetran">
+      <a
+        href="https://www.buymeacoffee.com/brandonleetran"
+        aria-label="Buy me a coffee"
+      >
         <img
           src="/bmc-logo-yellow.png"
           className="rounded-xl block sm:hidden h-15 w-15"
