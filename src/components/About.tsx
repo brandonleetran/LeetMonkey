@@ -1,8 +1,16 @@
-function About() {
+type AboutProps = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+function About({ isOpen, onClose }: AboutProps) {
+  if (isOpen === false) {
+    return null;
+  }
   return (
     <div className="fixed inset-0 flex items-center justify-center z-40 px-6">
       <div className="glassy border border-white rounded-2xl p-8 max-w-2xl w-full z-50">
-        <div className="mb-10 flex">
+        <div className="mb-10 flex gap-10">
           <div className="rounded-full h-50 w-50">
             <img
               src="brandon-avatar-2.png"
@@ -10,7 +18,25 @@ function About() {
               alt="Brandon Avatar"
             ></img>
           </div>
-          <div>item</div>
+          <h3 className="my-auto">Hi, I'm Brandon!</h3>
+          <button
+            className="ml-auto mt-[-10px] mr-[-5px] cursor-pointer"
+            onClick={onClose}
+            aria-label="Close modal"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="size-8 hover:text-white transition-all duration-200 cursor-pointer"
+            >
+              <path
+                fillRule="evenodd"
+                d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
         </div>
         <blockquote className="mb-10 text-sm leading-7 border-l-2 pl-8 my-8 py-6 border-amber-300 italic">
           Welcome to <strong>LeetMonkey</strong>! LeetMonkey is a daily practice
@@ -23,30 +49,30 @@ function About() {
           part of the journey! - <strong>Brandon Lee Tran 🐒</strong>
         </blockquote>
         <p>
-          Like LeetMonkey?{" "}
+          Want to say hi?{" "}
           <a
-            href="https://buymeacoffee.com/brandonleetran"
-            className="underline underline-offset-3 hover:text-white"
+            href="https://www.brandonleetran.com/drops"
+            className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer"
           >
-            Support me
+            Leave me a note
           </a>
         </p>
         <p>
-          Love to say hi? Leave me a{" "}
+          Want to contribute?{" "}
           <a
-            href="https://www.brandonleetran.com/drops"
-            className="underline underline-offset-3 hover:text-white"
+            href="mailto:brandonleetran@icloud.com"
+            className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer"
           >
-            note
+            Shoot me an email
           </a>
         </p>
         <p className="mb-10">
-          Want to contribute? Shoot me an{" "}
+          Want to support LeetMonkey?{" "}
           <a
-            href="mailto:brandonleetran@icloud.com"
-            className="underline underline-offset-3 hover:text-white"
+            href="https://buymeacoffee.com/brandonleetran"
+            className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer"
           >
-            email
+            Buy me a coffee
           </a>
         </p>
         <small className="italic inline-block">
