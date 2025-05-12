@@ -59,9 +59,8 @@ function Header({ onOpen, theme, setTheme }: HeaderProps) {
   const handleTheme = () => {
     const index = themes.indexOf(theme);
     const nextTheme = themes[(index + 1) % themes.length];
-    console.log(`Current theme: ${theme}`);
-    console.log(`Next theme: ${nextTheme}`);
     setTheme(nextTheme);
+    console.log("handleTheme", nextTheme);
   };
   return (
     <header>
