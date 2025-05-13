@@ -31,6 +31,7 @@ function Layout({ children }: LayoutProps) {
     document.documentElement.classList.remove("dark", "light");
     if (theme === "system") {
       localStorage.removeItem("theme");
+      console.log("in system theme");
       const prefersDark = window.matchMedia(
         "(prefers-color-scheme: dark)"
       ).matches;
@@ -42,6 +43,7 @@ function Layout({ children }: LayoutProps) {
     }
   }, [theme]);
 
+  // runs after the second useEffect in order
   useEffect(() => {
     if (theme !== "system") {
       console.log("in third useEffect. Skipping");
