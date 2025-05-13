@@ -14,26 +14,54 @@ function Layout({ children }: LayoutProps) {
 
   // Similar to OnInitializedAsync in Blazor, this runs when the component is first mounted
   useEffect(() => {
-    console.log("Layout component mounted");
-    const storedTheme = localStorage.getItem("theme") as Theme;
-    if (storedTheme) {
+    console.log("Layout component mounted. First useEffect");
+    const storedTheme = localStorage.getItem("theme");
+    if (
+      storedTheme === "dark" ||
+      storedTheme === "light" ||
+      storedTheme === "system"
+    ) {
       setTheme(storedTheme);
     }
-  }, [])
+  }, []);
 
   // Similar to OnParametersSetAsync in Blazor, this runs when theme is changed
   useEffect(() => {
+    console.log("In second useEffect");
     document.documentElement.classList.remove("dark", "light");
     if (theme === "system") {
       localStorage.removeItem("theme");
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
       document.documentElement.classList.add(prefersDark ? "dark" : "light");
-    }
-    else {
+    } else {
       localStorage.setItem("theme", theme);
       document.documentElement.classList.toggle("dark", theme === "dark");
       document.documentElement.classList.toggle("light", theme === "light");
     }
+  }, [theme]);
+
+  useEffect(() => {
+    if (theme !== "system") {
+      console.log("in third useEffect. Skipping");
+      return;
+    }
+
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const updateSystemTheme = () => {
+      const prefersDark = media.matches;
+      document.documentElement.classList.remove("dark", "light");
+      document.documentElement.classList.add(prefersDark ? "dark" : "light");
+    };
+
+    console.log("adding event listener");
+    media.addEventListener("change", updateSystemTheme);
+    return () => {
+      media.removeEventListener("change", updateSystemTheme);
+      console.log("removing event listener");
+    };
   }, [theme]);
 
   return (
