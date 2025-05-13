@@ -56,12 +56,16 @@ function Header({ onOpen, theme, setTheme }: HeaderProps) {
     setTheme(nextTheme);
     console.log("handleTheme", nextTheme);
   };
+
   return (
     <header>
       <div className="max-w-5xl my-0 mx-auto flex justify-between py-8 items-center flex-wrap gap-8">
         <div className="flex gap-3 flex-wrap">
-          <a href="/" aria-label="Home">
-          </a>
+          <div>
+            <a href="/" aria-label="Home">
+              <img src={theme === "dark" ? "./leetmonkey-dark-cropped.svg" : "./leetmonkey-light-cropped.svg"} alt="LeetMonkey" width="150" height="20" loading="lazy"/>
+            </a>
+          </div>
           <div>
             <a href="/logs" aria-label="v1.0.0-beta.1">
               <span className="backdrop-blur-xl bg-white/5 border border-white/15 text-white text-xs px-3 py-1 rounded-full shadow-lg transition-all duration-300 ease-in-out hover:bg-white/10 hover:shadow-xl">
@@ -83,7 +87,7 @@ function Header({ onOpen, theme, setTheme }: HeaderProps) {
               <a
                 href="/archive"
                 aria-label="Open Archives"
-                className="hover:text-white tranistion-all duration-200 cursor-pointer md:hidden"
+                className="hover:text-white transition-all duration-200 cursor-pointer md:hidden"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
