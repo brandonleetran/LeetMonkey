@@ -23,12 +23,11 @@ function Layout({ children }: LayoutProps) {
 
   // Similar to OnParametersSetAsync in Blazor, this runs when theme is changed
   useEffect(() => {
-    console.log("Theme changed to:", theme);
+    document.documentElement.classList.remove("dark", "light");
     if (theme === "system") {
       localStorage.removeItem("theme");
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      document.documentElement.classList.toggle("dark", prefersDark);
-      document.documentElement.classList.toggle("light", !prefersDark);
+      document.documentElement.classList.add(prefersDark ? "dark" : "light");
     }
     else {
       localStorage.setItem("theme", theme);

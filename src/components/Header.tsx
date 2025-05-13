@@ -2,7 +2,7 @@ import { HeaderProps } from "../types.ts";
 
 function Header({ onOpen, theme, setTheme }: HeaderProps) {
   const themes = ["system", "light", "dark"] as const;
-  
+  const isDark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);  
   const icons = {
     system: (
       <svg
@@ -63,7 +63,7 @@ function Header({ onOpen, theme, setTheme }: HeaderProps) {
         <div className="flex gap-3 flex-wrap">
           <div>
             <a href="/" aria-label="Home">
-              <img src={theme === "dark" ? "./leetmonkey-dark-cropped.svg" : "./leetmonkey-light-cropped.svg"} alt="LeetMonkey" width="150" height="20" loading="lazy"/>
+              <img src={isDark ? "./leetmonkey-dark-cropped.svg" : "./leetmonkey-light-cropped.svg"} alt="LeetMonkey" width="150" height="20" loading="lazy"/>
             </a>
           </div>
           <div>
