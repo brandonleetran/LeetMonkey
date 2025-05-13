@@ -3,12 +3,7 @@ import Footer from "./Footer";
 import BuyMeACoffee from "./BuyMeACoffee";
 import About from "./About";
 import { useState, useEffect } from "react";
-
-type LayoutProps = {
-  children: React.ReactNode;
-};
-
-type Theme = "dark" | "light" | "system";
+import { Theme, LayoutProps } from "../types.ts";
 
 function Layout({ children }: LayoutProps) {
   const [theme, setTheme] = useState<Theme>("system");
@@ -19,6 +14,7 @@ function Layout({ children }: LayoutProps) {
 
   // Similar to OnInitializedAsync in Blazor, this runs when the component is first mounted
   useEffect(() => {
+    console.log("Layout component mounted");
     const storedTheme = localStorage.getItem("theme") as Theme;
     if (storedTheme) {
       setTheme(storedTheme);
@@ -27,6 +23,7 @@ function Layout({ children }: LayoutProps) {
 
   // Similar to OnParametersSetAsync in Blazor, this runs when theme is changed
   useEffect(() => {
+    console.log("Theme changed to:", theme);
     if (theme === "system") {
       localStorage.removeItem("theme");
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;

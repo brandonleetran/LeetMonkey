@@ -1,7 +1,4 @@
-type AboutProps = {
-  isOpen: boolean;
-  onClose: () => void;
-};
+import { AboutProps } from "../types";
 
 function About({ isOpen, onClose }: AboutProps) {
   if (isOpen === false) {
