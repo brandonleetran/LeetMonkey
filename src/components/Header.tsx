@@ -63,7 +63,7 @@ function Header({ onOpen, theme, setTheme }: HeaderProps) {
   return (
     <header>
       <div className="max-w-5xl my-0 mx-auto flex justify-between py-8 items-center flex-wrap gap-8">
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex gap-2 md:gap-4 flex-wrap items-center">
           <div>
             <a href="/" aria-label="Home">
               <img
@@ -75,6 +75,7 @@ function Header({ onOpen, theme, setTheme }: HeaderProps) {
                 alt="LeetMonkey"
                 width="150"
                 height="20"
+                className="w-[125px] md:w-[150px] h-auto"
                 loading="lazy"
               />
             </a>
