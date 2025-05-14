@@ -69,8 +69,8 @@ function Header({ onOpen, theme, setTheme }: HeaderProps) {
               <img
                 src={
                   isDark
-                    ? "./leetmonkey-dark-cropped.svg"
-                    : "./leetmonkey-light-cropped.svg"
+                    ? "/leetmonkey-dark-cropped.svg"
+                    : "/leetmonkey-light-cropped.svg"
                 }
                 alt="LeetMonkey"
                 width="150"
