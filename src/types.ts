@@ -12,5 +12,6 @@ export type LayoutProps = {
 export type HeaderProps = {
     onOpen: () => void;
     theme: Theme;
+    isDark: boolean;
     setTheme: (theme: Theme) => void;
 };

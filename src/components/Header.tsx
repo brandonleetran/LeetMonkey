@@ -1,11 +1,7 @@
 import { HeaderProps } from "../types.ts";
 
-function Header({ onOpen, theme, setTheme }: HeaderProps) {
+function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
   const themes = ["system", "light", "dark"] as const;
-  const isDark =
-    theme === "dark" ||
-    (theme === "system" &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches);
   const icons = {
     system: (
       <svg
@@ -52,7 +48,7 @@ function Header({ onOpen, theme, setTheme }: HeaderProps) {
       </svg>
     ),
   } as const;
-
+  
   const handleTheme = () => {
     const index = themes.indexOf(theme);
     const nextTheme = themes[(index + 1) % themes.length];

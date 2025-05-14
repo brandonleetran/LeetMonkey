@@ -7,6 +7,7 @@ import { Theme, LayoutProps } from "../types.ts";
 
 function Layout({ children }: LayoutProps) {
   const [theme, setTheme] = useState<Theme | null>(null);
+  const [isDark, setIsDark] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleClose = () => setIsModalOpen(false);
@@ -16,7 +17,12 @@ function Layout({ children }: LayoutProps) {
   useEffect(() => {
     console.log("Layout component mounted. First useEffect");
     const storedTheme = localStorage.getItem("theme") as Theme | null;
-    setTheme(storedTheme ?? "system");
+    const fallbackTheme = storedTheme ?? "system";
+    setTheme(fallbackTheme);
+  
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const resolvedDark = fallbackTheme === "dark" || (fallbackTheme === "system" && prefersDark);
+    setIsDark(resolvedDark);
   }, []);
 
   // Similar to OnParametersSetAsync in Blazor, this runs when theme is changed
@@ -30,10 +36,11 @@ function Layout({ children }: LayoutProps) {
         "(prefers-color-scheme: dark)"
       ).matches;
       document.documentElement.classList.add(prefersDark ? "dark" : "light");
+      setIsDark(prefersDark);
     } else if (theme !== null) {
       localStorage.setItem("theme", theme);
-      document.documentElement.classList.toggle("dark", theme === "dark");
-      document.documentElement.classList.toggle("light", theme === "light");
+      document.documentElement.classList.add(isDark ? "dark" : "light");
+      setIsDark(theme === "dark");
     }
   }, [theme]);
 
@@ -50,6 +57,7 @@ function Layout({ children }: LayoutProps) {
       const prefersDark = media.matches;
       document.documentElement.classList.remove("dark", "light");
       document.documentElement.classList.add(prefersDark ? "dark" : "light");
+      setIsDark(prefersDark);
     };
 
     console.log("adding event listener");
@@ -66,6 +74,7 @@ function Layout({ children }: LayoutProps) {
         onOpen={handleOpen}
         setTheme={setTheme}
         theme={theme ?? "system"}
+        isDark={isDark}
       />
       <main className="max-w-5xl mx-auto my-0">{children}</main>
       <Footer />
