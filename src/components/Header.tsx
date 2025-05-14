@@ -48,7 +48,7 @@ function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
       </svg>
     ),
   } as const;
-  
+
   const handleTheme = () => {
     const index = themes.indexOf(theme);
     const nextTheme = themes[(index + 1) % themes.length];
@@ -77,7 +77,7 @@ function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
             </a>
           </div>
           <div>
-            <a href="/logs" aria-label="v1.0.0-beta.1" title="v1.0.0-beta.1">
+            <a href="/CHANGELOG.md" aria-label="v1.0.0-beta.1" title="v1.0.0-beta.1">
               <span className="backdrop-blur-xl hover:bg-white/10 light:hover:bg-black/10 bg-white/5 light:bg-black/5 light:text-[#0d1117] light:border-black/15 light:hover:border-black/50 hover:border-white/50 text-white cursor-pointer border border-white/15 text-xs px-3 py-1 rounded-full transition-all duration-300 ease-in-out">
                 v1.0.0-beta.1
               </span>

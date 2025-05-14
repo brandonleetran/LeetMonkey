@@ -13,7 +13,6 @@ function Layout({ children }: LayoutProps) {
   const handleClose = () => setIsModalOpen(false);
   const handleOpen = () => setIsModalOpen(true);
 
-  // Similar to OnInitializedAsync in Blazor, this runs when the component is first mounted
   useEffect(() => {
     console.log("Layout component mounted. First useEffect");
     const storedTheme = localStorage.getItem("theme") as Theme | null;
@@ -25,7 +24,6 @@ function Layout({ children }: LayoutProps) {
     setIsDark(resolvedDark);
   }, []);
 
-  // Similar to OnParametersSetAsync in Blazor, this runs when theme is changed
   useEffect(() => {
     console.log("In second useEffect");
     document.documentElement.classList.remove("dark", "light");
@@ -45,7 +43,6 @@ function Layout({ children }: LayoutProps) {
     }
   }, [theme]);
 
-  // runs after the second useEffect in order
   useEffect(() => {
     if (theme !== "system") {
       console.log("in third useEffect. Skipping");
