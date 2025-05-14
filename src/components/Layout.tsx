@@ -39,7 +39,8 @@ function Layout({ children }: LayoutProps) {
       setIsDark(prefersDark);
     } else if (theme !== null) {
       localStorage.setItem("theme", theme);
-      document.documentElement.classList.add(isDark ? "dark" : "light");
+      document.documentElement.classList.toggle("dark", theme === "dark");
+      document.documentElement.classList.toggle("light", theme === "light");
       setIsDark(theme === "dark");
     }
   }, [theme]);
@@ -54,6 +55,7 @@ function Layout({ children }: LayoutProps) {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
 
     const updateSystemTheme = () => {
+      console.log("updating system theme");
       const prefersDark = media.matches;
       document.documentElement.classList.remove("dark", "light");
       document.documentElement.classList.add(prefersDark ? "dark" : "light");
