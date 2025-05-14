@@ -2,9 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [0.0.0](https://github.com/brandonleetran/LeetMonkey/compare/v0.0.1...v0.0.0) (2025-05-14)
-
-## 0.0.0 (2025-05-14)
+### 0.0.1 (2025-05-14)
 
 
 ### Features
@@ -39,11 +37,3 @@ All notable changes to this project will be documented in this file. See [standa
 * make logo reactive to theme changes ([1dab296](https://github.com/brandonleetran/LeetMonkey/commit/1dab29664ef9c4c63c5b9d0f9cd99b05c539f191))
 * public links ([4e79444](https://github.com/brandonleetran/LeetMonkey/commit/4e79444cb913e3aaa6c826cc29c684a36dd1710e))
 * update opengraph image domain ([84e91a8](https://github.com/brandonleetran/LeetMonkey/commit/84e91a86341772762565f174ed9d99e72cb5ebee))
-
-## [0.0.0](https://github.com/brandonleetran/LeetMonkey/compare/v0.0.4...v0.0.0) (2025-05-14)
-
-### [0.0.4](https://github.com/brandonleetran/LeetMonkey/compare/v0.0.3...v0.0.4) (2025-05-14)
-
-### [0.0.3](https://github.com/brandonleetran/LeetMonkey/compare/v0.0.2...v0.0.3) (2025-05-14)
-
-### [0.0.2](https://github.com/brandonleetran/LeetMonkey/compare/v0.0.1...v0.0.2) (2025-05-14)
