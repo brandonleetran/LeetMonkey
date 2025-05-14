@@ -31,9 +31,7 @@
         font-weight: normal;
         color: #fff;
         background-color: rgb(64, 64, 64);
-        padding: 1px;
-        border: 1px solid rgb(64, 64, 64);
-        border-radius: 3px;
+        padding: 2px;
     }
 }
 
