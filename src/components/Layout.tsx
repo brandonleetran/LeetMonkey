@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { Theme, LayoutProps } from "../types.ts";
 
 function Layout({ children }: LayoutProps) {
-  const [theme, setTheme] = useState<Theme>("system");
+  const [theme, setTheme] = useState<Theme | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleClose = () => setIsModalOpen(false);
@@ -15,14 +15,8 @@ function Layout({ children }: LayoutProps) {
   // Similar to OnInitializedAsync in Blazor, this runs when the component is first mounted
   useEffect(() => {
     console.log("Layout component mounted. First useEffect");
-    const storedTheme = localStorage.getItem("theme");
-    if (
-      storedTheme === "dark" ||
-      storedTheme === "light" ||
-      storedTheme === "system"
-    ) {
-      setTheme(storedTheme);
-    }
+    const storedTheme = localStorage.getItem("theme") as Theme | null;
+    setTheme(storedTheme ?? "system");
   }, []);
 
   // Similar to OnParametersSetAsync in Blazor, this runs when theme is changed
@@ -36,7 +30,7 @@ function Layout({ children }: LayoutProps) {
         "(prefers-color-scheme: dark)"
       ).matches;
       document.documentElement.classList.add(prefersDark ? "dark" : "light");
-    } else {
+    } else if (theme !== null) {
       localStorage.setItem("theme", theme);
       document.documentElement.classList.toggle("dark", theme === "dark");
       document.documentElement.classList.toggle("light", theme === "light");
@@ -68,7 +62,11 @@ function Layout({ children }: LayoutProps) {
 
   return (
     <div className="px-6">
-      <Header onOpen={handleOpen} setTheme={setTheme} theme={theme} />
+      <Header
+        onOpen={handleOpen}
+        setTheme={setTheme}
+        theme={theme ?? "system"}
+      />
       <main className="max-w-5xl mx-auto my-0">{children}</main>
       <Footer />
       <BuyMeACoffee />
