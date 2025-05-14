@@ -2,14 +2,17 @@ import { HeaderProps } from "../types.ts";
 
 function Header({ onOpen, theme, setTheme }: HeaderProps) {
   const themes = ["system", "light", "dark"] as const;
-  const isDark = theme === "dark" || (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);  
+  const isDark =
+    theme === "dark" ||
+    (theme === "system" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches);
   const icons = {
     system: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="currentColor"
-        className="size-6 hover:text-white transition-all duration-200 cursor-pointer"
+        className="size-6 hover:text-white light:hover:text-black/50 transition-all duration-200 cursor-pointer ease-in-out"
       >
         <path
           fillRule="evenodd"
@@ -25,7 +28,7 @@ function Header({ onOpen, theme, setTheme }: HeaderProps) {
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="size-6"
+        className="size-6 hover:text-black/50 cursor-pointer transition-all duration-200 ease-in-out"
       >
         <path
           strokeLinecap="round"
@@ -39,7 +42,7 @@ function Header({ onOpen, theme, setTheme }: HeaderProps) {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="currentColor"
-        className="size-6 hover:text-white transition-all duration-200"
+        className="size-6 hover:text-white transition-all duration-200 ease-in-out cursor-pointer"
       >
         <path
           fillRule="evenodd"
@@ -63,12 +66,22 @@ function Header({ onOpen, theme, setTheme }: HeaderProps) {
         <div className="flex gap-3 flex-wrap">
           <div>
             <a href="/" aria-label="Home">
-              <img src={isDark ? "./leetmonkey-dark-cropped.svg" : "./leetmonkey-light-cropped.svg"} alt="LeetMonkey" width="150" height="20" loading="lazy"/>
+              <img
+                src={
+                  isDark
+                    ? "./leetmonkey-dark-cropped.svg"
+                    : "./leetmonkey-light-cropped.svg"
+                }
+                alt="LeetMonkey"
+                width="150"
+                height="20"
+                loading="lazy"
+              />
             </a>
           </div>
           <div>
             <a href="/logs" aria-label="v1.0.0-beta.1">
-              <span className="backdrop-blur-xl bg-white/5 border border-white/15 text-white text-xs px-3 py-1 rounded-full shadow-lg transition-all duration-300 ease-in-out hover:bg-white/10 hover:shadow-xl">
+              <span className="backdrop-blur-xl hover:bg-white/10 light:hover:bg-black/10 bg-white/5 light:bg-black/5 light:text-[#0d1117] light:border-black/15 light:hover:border-black/50 hover:border-white/50 text-white cursor-pointer border border-white/15 text-xs px-3 py-1 rounded-full transition-all duration-300 ease-in-out">
                 v1.0.0-beta.1
               </span>
             </a>
@@ -80,7 +93,7 @@ function Header({ onOpen, theme, setTheme }: HeaderProps) {
               <a
                 href="/archive"
                 aria-label="Open Archives"
-                className="hover:text-white transition-all duration-200 cursor-pointer hidden md:block"
+                className="hover:text-white light:hover:text-black/50 light:text-[#0d1117] transition-all duration-200 cursor-pointer hidden md:block ease-in-out"
               >
                 Archive
               </a>
@@ -107,7 +120,6 @@ function Header({ onOpen, theme, setTheme }: HeaderProps) {
             <li className="list-none">
               <button
                 onClick={onOpen}
-                className="hover:text-white transition-all duration-200 cursor-pointer"
                 aria-label="More Information"
                 title="More Information"
               >
@@ -115,7 +127,7 @@ function Header({ onOpen, theme, setTheme }: HeaderProps) {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="size-6 hover:text-white transition-all duration-200 cursor-pointer"
+                  className="size-6 hover:text-white light:hover:text-black/50 transition-all duration-200 cursor-pointer ease-in-out"
                 >
                   <path
                     fillRule="evenodd"
@@ -128,7 +140,6 @@ function Header({ onOpen, theme, setTheme }: HeaderProps) {
             <li className="list-none">
               <button
                 onClick={handleTheme}
-                className="hover:text-white cursor-pointer transition-all duration-300 ease-in-ou"
                 aria-label="Toggle Theme"
                 title="Toggle Theme"
               >
