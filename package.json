@@ -1,7 +1,7 @@
 {
   "name": "leetmonkey",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "release": "standard-version --outfile public/CHANGELOG.md --skip.tag --skip.commit",
