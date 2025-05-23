@@ -102,7 +102,7 @@ function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
               <a
                 href="/archive"
                 aria-label="Open Archives"
-                className="hover:text-white transition-all duration-200 cursor-pointer md:hidden"
+                className="hover:text-white light:hover:text-black/50 transition-all duration-200 cursor-pointer md:hidden"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
