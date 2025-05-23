@@ -92,10 +92,8 @@ function App() {
           {problemOfTheDay.id + ". " + problemOfTheDay.title}
         </a>
       </h1>
-      <p className="mb-4">
-        <ReactMarkdown>{problemOfTheDay.description}</ReactMarkdown>
-      </p>
-      <p className="font-bold mb-2">Example</p>
+      <ReactMarkdown>{problemOfTheDay.description}</ReactMarkdown>
+      <p className="font-bold mb-2 mt-4">Example</p>
       <p className="mb-2">
         Input: <code>{problemOfTheDay.examples.input}</code>
       </p>
