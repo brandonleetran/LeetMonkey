@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/brandonleetran/LeetMonkey/compare/v0.0.1...v0.0.2) (2025-05-23)
+
+
+### Features
+
+* add leetcode link to database ([dac8cca](https://github.com/brandonleetran/LeetMonkey/commit/dac8ccab14f62e0c8ab56bd088b38946895cedb2))
+* add problem of the day and loading animation! ([92706e8](https://github.com/brandonleetran/LeetMonkey/commit/92706e8fc1cb6dfbc10d20d302fef736c5444a97))
+* **styles:** add dynamic typography based on screen size ([703821b](https://github.com/brandonleetran/LeetMonkey/commit/703821b1414ef082371cebca5d406dad9669d527))
+* **styles:** add root typography ([c17a4ef](https://github.com/brandonleetran/LeetMonkey/commit/c17a4efa237ffe12370af7f3d23d03d92eec2b1e))
+
+
+### Bug Fixes
+
+* **a11y:** add aria-label to button ([5137ae3](https://github.com/brandonleetran/LeetMonkey/commit/5137ae3e91f6467db6c88bb112ef85ec907712d5))
+* loading animation for problem of the day ([026db45](https://github.com/brandonleetran/LeetMonkey/commit/026db4512742380a40ac47b85de96ab7d318ba80))
+* minor fixes for problem of the day ([f823d59](https://github.com/brandonleetran/LeetMonkey/commit/f823d598be59bd373e86ddfa25581f1dc8a6aaf9))
+* minor fixes for problem of the day ([3895a90](https://github.com/brandonleetran/LeetMonkey/commit/3895a90fa14b24a97d28cd29692b69decdfdccfb))
+* **refactor:** problem of the day logic ([ca3ef1f](https://github.com/brandonleetran/LeetMonkey/commit/ca3ef1f5a5da7d6e6198662b282d9343d7076c2b))
+* update database ([e386808](https://github.com/brandonleetran/LeetMonkey/commit/e386808f24c82911ccbc4d1af7e844bebb972516))
+
 ## 0.0.0 (2025-05-14)
 
 
