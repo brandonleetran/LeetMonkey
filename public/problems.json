@@ -3,6 +3,7 @@
     "id": 1,
     "title": "Two Sum",
     "difficulty": "Easy",
+    "link": "https://leetcode.com/problems/two-sum/",
     "description": "Given an array of integers `nums` and an integer `target`, return the indices of the two numbers such that they add up to `target`. You may assume that each input would have exactly one solution, and you may not use the same element twice. Return the answer in any order.",
     "examples":
       {
@@ -19,6 +20,7 @@
     "id": 2,
     "title": "Valid Palindrome",
     "difficulty": "Easy",
+    "link": "https://leetcode.com/problems/valid-palindrome/",
     "description": "Given an string `s`, return `true` if `x` is a palindrome, and `false` otherwise. A palindrome is a string that reads the same forward and backward. It is also case-insensitive and ignores all non-alphanumeric characters.",
     "examples": 
       {
@@ -34,6 +36,7 @@
     "id": 3,
     "title": "Valid Parentheses",
     "difficulty": "Easy",
+    "link": "https://leetcode.com/problems/valid-parentheses/",
     "description": "Given a string `s` containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. An input string is valid if: open brackets are closed by the same type of brackets, and open brackets are closed in the correct order.",
     "examples":
       {
@@ -49,6 +52,7 @@
     "id": 4,
     "title": "Merge Two Sorted Lists",
     "difficulty": "Easy",
+    "link": "https://leetcode.com/problems/merge-two-sorted-lists/",
     "description": "You are given the heads of two sorted linked lists `list1` and `list2`. Merge the two lists into one sorted list. Return the head of the merged linked list.",
     "examples": 
       {
@@ -64,6 +68,7 @@
     "id": 5,
     "title": "Remove Duplicates from Sorted Array",
     "difficulty": "Easy",
+    "link": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
     "description": "Given a sorted array `nums`, remove the duplicates in-place such that each element appears only once and return the new length. Do not allocate extra space for another array; modify the input array in-place with O(1) extra memory.",
     "examples":
       {
@@ -80,6 +85,7 @@
     "id": 6,
     "title": "Best Time to Buy and Sell Stock",
     "difficulty": "Easy",
+    "link": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
     "description": "You are given an array `prices` where `prices[i]` is the price of a given stock on the `i-th` day. You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock. Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.",
     "examples":
       {
@@ -95,6 +101,7 @@
     "id": 7,
     "title": "Valid Anagram",
     "difficulty": "Easy",
+    "link": "https://leetcode.com/problems/valid-anagram/",
     "description": "Given two strings `s` and `t`, return `true` if `t` is an anagram of `s`, and `false` otherwise. An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase.",
     "examples":
       {
@@ -111,6 +118,7 @@
     "id": 8,
     "title": "Binary Search",
     "difficulty": "Easy",
+    "link": "https://leetcode.com/problems/binary-search/",
     "description": "Given an array of integers `nums` which is sorted in ascending order, and an integer `target`, return the index of `target` if it is in `nums`, or -1 if it is not present.",
     "examples":
       {
@@ -126,6 +134,7 @@
     "id": 9,
     "title": "Contains Duplicate",
     "difficulty": "Easy",
+    "link": "https://leetcode.com/problems/contains-duplicate/",
     "description": "Given an integer array `nums`, return `true` if any value appears more than once in the array, otherwise return `false`.",
     "examples":
     {
@@ -141,6 +150,7 @@
     "id": 10,
     "title": "Maximum Subarray",
     "difficulty": "Easy",
+    "link": "https://leetcode.com/problems/maximum-subarray/",
     "description": "Given an integer array `nums`, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.",
     "examples":
       {
