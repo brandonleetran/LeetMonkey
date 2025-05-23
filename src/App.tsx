@@ -30,8 +30,8 @@ function App() {
 
   useEffect(() => {
     const getProblemOfTheDay = () => {
-      setProblemOfTheDay(problems[1]);
-      localStorage.setItem("problemOfTheDay", JSON.stringify(problems[1]));
+      setProblemOfTheDay(problems[0]);
+      localStorage.setItem("problemOfTheDay", JSON.stringify(problems[0]));
     }
 
     // if problem is not null, then that means it's from the cache
@@ -48,11 +48,10 @@ function App() {
           <div className="h-7 w-1/5 bg-gray-700 rounded animate-pulse" />
         </h1>
         <p className="mb-4">
-          <div className="space-y-4">
+          <div className="space-y-4" />
           <div className="h-6 w-full bg-gray-700 rounded animate-pulse" />
           <div className="h-6 w-full bg-gray-700 rounded animate-pulse" />
           <div className="h-6 w-full bg-gray-700 rounded animate-pulse" />
-      </div>
         </p>
         <p className="font-bold space-y-4">Example</p>
         <p className="flex items-center gap-2 mb-2">Input: <span className="h-5 w-1/3 bg-gray-700 rounded animate-pulse inline-block" /></p>
@@ -64,7 +63,7 @@ function App() {
   return (
     <Layout>
       <div>
-        <h1 className="text-2xl font-bold mb-4">{problemOfTheDay.title}</h1>
+        <h1 className="text-2xl font-bold mb-4">{problemOfTheDay.id + '. ' + problemOfTheDay.title}</h1>
         <p className="mb-4">
           Given an array of integers <code>nums</code> and an integer{" "}
           <code>target</code>, return indices of the two numbers such that they
@@ -75,7 +74,6 @@ function App() {
         <p className="font-bold mb-2">Example</p>
         <p className="mb-2">Input: <code>{problemOfTheDay.examples.input}</code></p>
         <p>Output: <code>{problemOfTheDay.examples.output}</code></p>
-        <br />
       </div>
     </Layout>
   );
