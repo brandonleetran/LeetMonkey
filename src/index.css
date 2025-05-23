@@ -37,16 +37,13 @@
 
     p {
         font-size: .875rem;
-        line-height: 1.8;
+        line-height: 1.75;
         font-weight: normal;
     }
 
     code {
-        font-size: .875rem;
-        line-height: 1.8;
         color: #fff;
         background-color: rgb(64, 64, 64);
-        padding: 2px;
     }
 
     @media (min-width: 768px) {
