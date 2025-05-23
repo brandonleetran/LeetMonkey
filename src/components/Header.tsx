@@ -97,7 +97,7 @@ function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
                 title="Open Archives"
                 className="hover:text-white light:hover:text-black/50 light:text-[#0d1117] transition-all duration-200 cursor-pointer hidden md:block ease-in-out"
               >
-                Archive
+                archive
               </a>
               <a
                 href="/archive"

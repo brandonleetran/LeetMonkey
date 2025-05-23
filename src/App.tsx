@@ -83,7 +83,7 @@ function App() {
 
   return (
     <Layout>
-      <h1 className="font-bold mb-4">
+      <h1 className="mb-4">
         <a
           href={problemOfTheDay.link}
           aria-label={problemOfTheDay.title}
@@ -93,7 +93,7 @@ function App() {
         </a>
       </h1>
       <ReactMarkdown>{problemOfTheDay.description}</ReactMarkdown>
-      <p className="font-bold mb-2 mt-4">Example</p>
+      <h2 className="mb-2 mt-4">Example</h2>
       <p className="mb-2">
         Input: <code>{problemOfTheDay.examples.input}</code>
       </p>
