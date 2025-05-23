@@ -58,7 +58,7 @@ function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
 
   return (
     <header>
-      <div className="max-w-5xl my-0 mx-auto flex justify-between py-8 items-center flex-wrap gap-8">
+      <div className="max-w-5xl my-0 mx-auto flex justify-between py-5 md:py-8 items-center flex-wrap gap-8">
         <div className="flex gap-2 md:gap-4 flex-wrap items-center">
           <div>
             <a href="/" aria-label="Home">
