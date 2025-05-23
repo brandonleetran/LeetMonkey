@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/brandonleetran/LeetMonkey/compare/v0.0.2...v0.0.3) (2025-05-23)
+
+
+### Features
+
+* add dynamic description with markdown text ([b3d4358](https://github.com/brandonleetran/LeetMonkey/commit/b3d435880daffab17448be46abe329f10284da24))
+* add new font family ([4457416](https://github.com/brandonleetran/LeetMonkey/commit/4457416efd77151422a6bd453ada636a6e904ca0))
+* update modal content ([6b82a50](https://github.com/brandonleetran/LeetMonkey/commit/6b82a50c4f67412fc1c57bf4415859a85865a455))
+
+
+### Bug Fixes
+
+* hover state for light theme ([e07336f](https://github.com/brandonleetran/LeetMonkey/commit/e07336f58f97fbd1711c71139cd5201dca66527c))
+* light themed links ([deb8e10](https://github.com/brandonleetran/LeetMonkey/commit/deb8e1005a05ca4c6df3e5d312be14c520c35df1))
+* light themed links ([fb70929](https://github.com/brandonleetran/LeetMonkey/commit/fb70929ee379b9d596d415a5de431c1f71694161))
+* padding for coffee button ([1915f73](https://github.com/brandonleetran/LeetMonkey/commit/1915f73a3a5d0fa5cb5e69a313287f8efbc4b343))
+* padding for mobile header ([846eeb6](https://github.com/brandonleetran/LeetMonkey/commit/846eeb65b78ade6ea13bfbcd2ea068e852665639))
+
 ### [0.0.2](https://github.com/brandonleetran/LeetMonkey/compare/v0.0.1...v0.0.2) (2025-05-23)
 
 
