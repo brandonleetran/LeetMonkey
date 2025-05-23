@@ -37,7 +37,7 @@
     "title": "Valid Parentheses",
     "difficulty": "Easy",
     "link": "https://leetcode.com/problems/valid-parentheses/",
-    "description": "Given a string `s` containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. An input string is valid if: open brackets are closed by the same type of brackets, and open brackets are closed in the correct order.",
+    "description": "Given a string `s` containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid. An input string is valid if: open brackets are closed by the same type of brackets, and open brackets are closed in the correct order.",
     "examples":
       {
         "input": "s = \"()[]{}\"",
