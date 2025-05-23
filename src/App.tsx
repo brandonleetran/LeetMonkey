@@ -58,7 +58,6 @@ function App() {
         <p className="flex items-center gap-2 mb-2">Input: <span className="h-5 w-1/3 bg-gray-700 rounded animate-pulse inline-block" /></p>
         <p className="flex items-center gap-2">Output: <span className="h-5 w-1/3 bg-gray-700 rounded animate-pulse inline-block" /></p>
       </div>
-      <div className="p-10 bg-slate-800 rounded text-black my-10 h-[500px]"></div>
     </Layout>
   )}
 
