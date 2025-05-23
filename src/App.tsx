@@ -47,12 +47,11 @@ function App() {
         <h1 className="text-2xl font-bold mb-4">
           <div className="h-7 w-1/5 bg-gray-700 rounded animate-pulse" />
         </h1>
-        <p className="mb-4">
-          <div className="space-y-4" />
+        <div className="space-y-4 mb-4">
           <div className="h-6 w-full bg-gray-700 rounded animate-pulse" />
           <div className="h-6 w-full bg-gray-700 rounded animate-pulse" />
           <div className="h-6 w-full bg-gray-700 rounded animate-pulse" />
-        </p>
+        </div>
         <p className="font-bold space-y-4">Example</p>
         <p className="flex items-center gap-2 mb-2">Input: <span className="h-5 w-1/3 bg-gray-700 rounded animate-pulse inline-block" /></p>
         <p className="flex items-center gap-2">Output: <span className="h-5 w-1/3 bg-gray-700 rounded animate-pulse inline-block" /></p>
