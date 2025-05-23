@@ -89,7 +89,7 @@ function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
           </div>
         </div>
         <nav>
-          <ul className="list-none flex gap-4 md:gap-6">
+          <ul className="flex gap-4 md:gap-6 items-center">
             <li>
               <a
                 href="/archive"
@@ -119,8 +119,9 @@ function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
                 </svg>
               </a>
             </li>
-            <li className="list-none">
+            <li>
               <button
+                className="block"
                 onClick={onOpen}
                 aria-label="More Information"
                 title="More Information"
@@ -139,8 +140,9 @@ function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
                 </svg>
               </button>
             </li>
-            <li className="list-none">
+            <li>
               <button
+                className="block"
                 onClick={handleTheme}
                 aria-label="Toggle Theme"
                 title="Toggle Theme"

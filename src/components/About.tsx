@@ -6,22 +6,20 @@ function About({ isOpen, onClose }: AboutProps) {
   }
   return (
     <div className="fixed inset-0 flex items-center justify-center z-40 px-6">
-      <div className="glassy border border-white rounded-2xl p-5 max-w-lg w-full z-50">
-        <h2 className="text-center mb-4 text-white font-bold">
-          About LeetMonkey
-        </h2>
+      <div className="glassy border border-white light:border-black/5 rounded-2xl p-5 max-w-lg w-full z-50">
+        <h2 className="text-center mb-4 font-bold">About LeetMonkey</h2>
         <p>
           LeetMonkey is a speed-typing playground for coding problems inspired
           by{" "}
           <a
-            className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer"
+            className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer light:hover:text-black/50"
             href="https://leetcode.com/"
           >
             LeetCode
           </a>{" "}
           and{" "}
           <a
-            className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer"
+            className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer light:hover:text-black/50"
             href="https://monkeytype.com"
           >
             MonkeyType
@@ -33,7 +31,7 @@ function About({ isOpen, onClose }: AboutProps) {
             Want to say hi?{" "}
             <a
               href="https://www.brandonleetran.com/drops"
-              className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer"
+              className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer light:hover:text-black/50"
             >
               Leave me a note
             </a>
@@ -42,7 +40,7 @@ function About({ isOpen, onClose }: AboutProps) {
             Want to contribute?{" "}
             <a
               href="mailto:brandonleetran@icloud.com"
-              className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer"
+              className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer light:hover:text-black/50"
             >
               Shoot me an email
             </a>
@@ -51,7 +49,7 @@ function About({ isOpen, onClose }: AboutProps) {
             Want to support LeetMonkey?{" "}
             <a
               href="https://buymeacoffee.com/brandonleetran"
-              className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer"
+              className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer light:hover:text-black/50"
             >
               Buy me a coffee
             </a>
@@ -61,7 +59,7 @@ function About({ isOpen, onClose }: AboutProps) {
           Note: LeetMonkey is not affiliated with LeetCode or MonkeyType.
         </small>
         <button
-          className="absolute right-0 top-0 mt-4 mr-4 cursor-pointer"
+          className="absolute right-0 top-0 mt-4 mr-4"
           onClick={onClose}
           aria-label="Close modal"
         >
@@ -69,7 +67,7 @@ function About({ isOpen, onClose }: AboutProps) {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="size-5 md:size-7 hover:text-white transition-all duration-200 cursor-pointer"
+            className="size-5 md:size-7 hover:text-white transition-all duration-200 cursor-pointer light:hover:text-black/50"
           >
             <path
               fillRule="evenodd"
