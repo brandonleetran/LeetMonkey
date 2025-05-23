@@ -6,7 +6,10 @@
         height: 100vh;
         margin: 0;
         padding: 0;
-        font-family: monospace; /* Add font family */
+        font-family: monospace;
+        font-size: 1rem;
+        line-height: 1.8;
+        font-weight: normal;
     }
 
     html.dark {
