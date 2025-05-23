@@ -6,7 +6,7 @@ function About({ isOpen, onClose }: AboutProps) {
   }
   return (
     <div className="fixed inset-0 flex items-center justify-center z-40 px-6">
-      <div className="glassy border border-white light:border-black/5 rounded-2xl p-5 max-w-lg w-full z-50">
+      <div className="glassy border border-white light:border-black/20 rounded-2xl p-5 max-w-lg w-full z-50">
         <h2 className="text-center mb-4 font-bold">About LeetMonkey</h2>
         <p>
           LeetMonkey is a speed-typing playground for coding problems inspired
