@@ -1,4 +1,5 @@
 import { HeaderProps } from "../types.ts";
+import { NavLink } from "react-router-dom";
 
 function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
   const themes = ["system", "light", "dark"] as const;
@@ -61,7 +62,7 @@ function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
       <div className="max-w-5xl my-0 mx-auto flex justify-between py-5 md:py-8 items-center flex-wrap gap-8">
         <div className="flex gap-2 md:gap-4 flex-wrap items-center">
           <div>
-            <a href="/" aria-label="Home">
+            <NavLink to="/" aria-label="Home">
               <img
                 src={
                   isDark
@@ -74,7 +75,7 @@ function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
                 className="w-[125px] md:w-[150px] h-auto"
                 loading="lazy"
               />
-            </a>
+            </NavLink>
           </div>
           <div>
             <a
@@ -91,16 +92,16 @@ function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
         <nav>
           <ul className="flex gap-4 md:gap-6 items-center">
             <li>
-              <a
-                href="/archive"
+              <NavLink
+                to="/archive"
                 aria-label="Open Archives"
                 title="Open Archives"
                 className="hover:text-white light:hover:text-black/50 light:text-[#0d1117] transition-all duration-200 cursor-pointer hidden md:block ease-in-out"
               >
                 archive
-              </a>
-              <a
-                href="/archive"
+              </NavLink>
+              <NavLink
+                to="/archive"
                 aria-label="Open Archives"
                 className="hover:text-white light:hover:text-black/50 transition-all duration-200 cursor-pointer md:hidden"
               >
@@ -117,7 +118,7 @@ function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
                     clipRule="evenodd"
                   />
                 </svg>
-              </a>
+              </NavLink>
             </li>
             <li>
               <button
