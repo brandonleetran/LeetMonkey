@@ -14,7 +14,6 @@ function Layout({ children }: LayoutProps) {
   const handleOpen = () => setIsModalOpen(true);
 
   useEffect(() => {
-    console.log("Layout component mounted. First useEffect");
     const storedTheme = localStorage.getItem("theme") as Theme | null;
     const fallbackTheme = storedTheme ?? "system";
     setTheme(fallbackTheme);
@@ -25,7 +24,6 @@ function Layout({ children }: LayoutProps) {
   }, []);
 
   useEffect(() => {
-    console.log("In second useEffect");
     document.documentElement.classList.remove("dark", "light");
     if (theme === "system") {
       localStorage.removeItem("theme");
@@ -45,14 +43,12 @@ function Layout({ children }: LayoutProps) {
 
   useEffect(() => {
     if (theme !== "system") {
-      console.log("in third useEffect. Skipping");
       return;
     }
 
     const media = window.matchMedia("(prefers-color-scheme: dark)");
 
     const updateSystemTheme = () => {
-      console.log("updating system theme");
       const prefersDark = media.matches;
       document.documentElement.classList.remove("dark", "light");
       document.documentElement.classList.add(prefersDark ? "dark" : "light");
