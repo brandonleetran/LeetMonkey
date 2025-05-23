@@ -11,7 +11,8 @@ function About({ isOpen, onClose }: AboutProps) {
           About LeetMonkey
         </h2>
         <p>
-          Inspired by{" "}
+          LeetMonkey is a speed-typing playground for coding problems inspired
+          by{" "}
           <a
             className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer"
             href="https://leetcode.com/"
@@ -25,12 +26,10 @@ function About({ isOpen, onClose }: AboutProps) {
           >
             MonkeyType
           </a>
-          , LeetMonkey is a speed-typing playground for coding problems. All
-          answers are solved by myself to blend real interview prep with typing
-          mastery.
+          . Every solution is personally written and solved by me.
         </p>
-        <div className="my-5">
-          <p>
+        <div className="my-5 flex flex-col gap-1">
+          <small>
             Want to say hi?{" "}
             <a
               href="https://www.brandonleetran.com/drops"
@@ -38,8 +37,8 @@ function About({ isOpen, onClose }: AboutProps) {
             >
               Leave me a note
             </a>
-          </p>
-          <p>
+          </small>
+          <small>
             Want to contribute?{" "}
             <a
               href="mailto:brandonleetran@icloud.com"
@@ -47,8 +46,8 @@ function About({ isOpen, onClose }: AboutProps) {
             >
               Shoot me an email
             </a>
-          </p>
-          <p>
+          </small>
+          <small>
             Want to support LeetMonkey?{" "}
             <a
               href="https://buymeacoffee.com/brandonleetran"
@@ -56,13 +55,13 @@ function About({ isOpen, onClose }: AboutProps) {
             >
               Buy me a coffee
             </a>
-          </p>
+          </small>
         </div>
         <small className="italic inline-block">
-          Note: LeetMonkey is not affiliated with LeetCode.
+          Note: LeetMonkey is not affiliated with LeetCode or MonkeyType.
         </small>
         <button
-          className="absolute right-0 top-0 mt-5 mr-5 cursor-pointer"
+          className="absolute right-0 top-0 mt-4 mr-4 cursor-pointer"
           onClick={onClose}
           aria-label="Close modal"
         >
@@ -70,7 +69,7 @@ function About({ isOpen, onClose }: AboutProps) {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="size-8 hover:text-white transition-all duration-200 cursor-pointer"
+            className="size-5 md:size-7 hover:text-white transition-all duration-200 cursor-pointer"
           >
             <path
               fillRule="evenodd"
