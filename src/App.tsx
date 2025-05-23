@@ -1,5 +1,6 @@
 import Layout from "./components/Layout";
 import { useState, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
 
 type Problem = {
   id: number;
@@ -82,31 +83,25 @@ function App() {
 
   return (
     <Layout>
-      <div>
-        <h1 className="font-bold mb-4">
-          <a
-            href={problemOfTheDay.link}
-            aria-label={problemOfTheDay.title}
-            className="hover:underline"
-          >
-            {problemOfTheDay.id + ". " + problemOfTheDay.title}
-          </a>
-        </h1>
-        <p className="mb-4">
-          Given an array of integers <code>nums</code> and an integer{" "}
-          <code>target</code>, return indices of the two numbers such that they
-          add up to <code>target</code>. You may assume that each input would
-          have exactly one solution, and you may not use the same element twice.
-          You can return the answer in any order.
-        </p>
-        <p className="font-bold mb-2">Example</p>
-        <p className="mb-2">
-          Input: <code>{problemOfTheDay.examples.input}</code>
-        </p>
-        <p className="mb-6">
-          Output: <code>{problemOfTheDay.examples.output}</code>
-        </p>
-      </div>
+      <h1 className="font-bold mb-4">
+        <a
+          href={problemOfTheDay.link}
+          aria-label={problemOfTheDay.title}
+          className="hover:underline"
+        >
+          {problemOfTheDay.id + ". " + problemOfTheDay.title}
+        </a>
+      </h1>
+      <p className="mb-4">
+        <ReactMarkdown>{problemOfTheDay.description}</ReactMarkdown>
+      </p>
+      <p className="font-bold mb-2">Example</p>
+      <p className="mb-2">
+        Input: <code>{problemOfTheDay.examples.input}</code>
+      </p>
+      <p className="mb-6">
+        Output: <code>{problemOfTheDay.examples.output}</code>
+      </p>
     </Layout>
   );
 }
