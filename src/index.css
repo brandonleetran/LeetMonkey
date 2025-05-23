@@ -22,19 +22,32 @@
         color: #24292f;
     }
 
-    p {
+    h1 {
         font-size: 1rem;
+    }
+
+    p {
+        font-size: .875rem;
         line-height: 1.8;
         font-weight: normal;
     }
 
     code {
-        font-size: 1rem;
+        font-size: .875rem;
         line-height: 1.8;
         font-weight: normal;
         color: #fff;
         background-color: rgb(64, 64, 64);
         padding: 2px;
+    }
+
+    @media (min-width: 768px) {
+        h1 {
+            font-size: 1.25rem;
+        }
+        p, code {
+            font-size: 1rem;
+        }
     }
 }
 
