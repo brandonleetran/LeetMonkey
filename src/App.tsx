@@ -1,68 +1,97 @@
 import Layout from "./components/Layout";
 import { useState, useEffect } from "react";
 
+type Problem = {
+  id: number;
+  title: string;
+  link: string;
+  description: string;
+  examples: {
+    input: string;
+    output: string;
+  };
+};
+
 function App() {
   const [problems, setProblems] = useState(() => {
     const cached = localStorage.getItem("problems");
     return cached ? JSON.parse(cached) : [];
   });
 
-  const [problemOfTheDay, setProblemOfTheDay] = useState(() => {
-    const cached = localStorage.getItem("problemOfTheDay");
-    return cached ? JSON.parse(cached) : null;
-  });
-
   useEffect(() => {
+    // if problems is not empty, then that means it's from the cache
+    if (problems.length) return;
+
     const getProblems = async () => {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       const response = await fetch("/problems.json");
       const data = await response.json();
       setProblems(data);
       localStorage.setItem("problems", JSON.stringify(data));
-    }
-    
-    // if problems is not empty, then that means it's from the cache
-    if (!problems.length) {
-      getProblems();
-    }
-  },[])
+    };
 
-  useEffect(() => {
-    const getProblemOfTheDay = () => {
-      setProblemOfTheDay(problems[0]);
-      localStorage.setItem("problemOfTheDay", JSON.stringify(problems[0]));
-    }
+    getProblems();
+  }, []);
 
-    // if problem is not null, then that means it's from the cache
-    if (problems.length && !problemOfTheDay) {
-      getProblemOfTheDay();
-    }
-  }, [problems])
+  let problemOfTheDay: Problem | null = null;
+
+  // Start date is May 1st, 2025 00:00:00 UTC
+  if (problems.length) {
+    const utcDate = Date.UTC(2025, 4, 1, 0, 0, 0, 0);
+
+    // Get the current date in UTC
+    const date = new Date();
+    const utcToday = Date.UTC(
+      date.getUTCFullYear(),
+      date.getUTCMonth(),
+      date.getUTCDate()
+    );
+
+    // Calculate the difference in days
+    const MS_PER_DAY = 24 * 60 * 60 * 1000;
+    const differenceInDays = (utcToday - utcDate) / MS_PER_DAY;
+
+    // Get the index of the problem of the day
+    const index = Math.floor(differenceInDays) % problems.length;
+
+    problemOfTheDay = problems[index];
+  }
 
   if (!problemOfTheDay) {
     return (
-    <Layout>
-      <div>
-        <h1 className="text-2xl font-bold mb-4">
-          <div className="h-7 w-1/5 bg-gray-700 rounded animate-pulse" />
-        </h1>
+      <Layout>
         <div className="space-y-4 mb-4">
-          <div className="h-6 w-full bg-gray-700 rounded animate-pulse" />
-          <div className="h-6 w-full bg-gray-700 rounded animate-pulse" />
-          <div className="h-6 w-full bg-gray-700 rounded animate-pulse" />
+          <div className="h-7 w-1/5 bg-gray-700 rounded animate-pulse" />
+          <div className="h-7 w-full bg-gray-700 rounded animate-pulse" />
+          <div className="h-7 w-full bg-gray-700 rounded animate-pulse" />
+          <div className="h-7 w-full bg-gray-700 rounded animate-pulse" />
+          <div className="h-7 w-1/3 bg-gray-700 rounded animate-pulse" />
+          <div className="h-7 w-1/3 bg-gray-700 rounded animate-pulse" />
+          <div className="h-7 w-1/3 bg-gray-700 rounded animate-pulse" />
+          <div className="h-7 w-full bg-gray-700 rounded animate-pulse" />
+          <div className="h-7 w-full bg-gray-700 rounded animate-pulse" />
+          <div className="h-7 w-full bg-gray-700 rounded animate-pulse" />
+          <div className="h-7 w-full bg-gray-700 rounded animate-pulse" />
+          <div className="h-7 w-full bg-gray-700 rounded animate-pulse" />
+          <div className="h-7 w-full bg-gray-700 rounded animate-pulse" />
         </div>
-        <p className="font-bold space-y-4">Example</p>
-        <p className="flex items-center gap-2 mb-2">Input: <span className="h-5 w-1/3 bg-gray-700 rounded animate-pulse inline-block" /></p>
-        <p className="flex items-center gap-2">Output: <span className="h-5 w-1/3 bg-gray-700 rounded animate-pulse inline-block" /></p>
-      </div>
-    </Layout>
-  )}
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
       <div>
-        <h1 className="text-2xl font-bold mb-4">{problemOfTheDay.id + '. ' + problemOfTheDay.title}</h1>
+        <h1 className="font-bold mb-4">
+          <a
+            href={problemOfTheDay.link}
+            aria-label={problemOfTheDay.title}
+            className="hover:underline"
+          >
+            {problemOfTheDay.id + ". " + problemOfTheDay.title}
+          </a>
+        </h1>
         <p className="mb-4">
           Given an array of integers <code>nums</code> and an integer{" "}
           <code>target</code>, return indices of the two numbers such that they
@@ -71,8 +100,12 @@ function App() {
           You can return the answer in any order.
         </p>
         <p className="font-bold mb-2">Example</p>
-        <p className="mb-2">Input: <code>{problemOfTheDay.examples.input}</code></p>
-        <p>Output: <code>{problemOfTheDay.examples.output}</code></p>
+        <p className="mb-2">
+          Input: <code>{problemOfTheDay.examples.input}</code>
+        </p>
+        <p className="mb-6">
+          Output: <code>{problemOfTheDay.examples.output}</code>
+        </p>
       </div>
     </Layout>
   );
