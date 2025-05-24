@@ -26,44 +26,44 @@ export default function Archives() {
     </div>
     <div className="flex flex-col">
       <div className="p-4 rounded-lg bg-white/10 light:bg-black/5">
-        <p className="font-bold">1. Two Sum</p>
-        <p>2025-05-01</p>
+        <p className="font-bold mb-1">1. Two Sum</p>
+        <p className="text-xs md:text-sm">2025-05-01</p>
       </div>
       <div className="p-4 rounded-lg">
-        <p className="font-bold">2. Valid Palindrome</p>
-        <p>2025-05-02</p>
+        <p className="font-bold mb-1">2. Valid Palindrome</p>
+        <p className="text-xs md:text-sm">2025-05-02</p>
       </div>
       <div className="p-4 rounded-lg bg-white/10 light:bg-black/5">
-        <p className="font-bold">3. Valid Parenthesis</p>
-        <p>2025-05-03</p>
+        <p className="font-bold mb-1">3. Valid Parenthesis</p>
+        <p className="text-xs md:text-sm">2025-05-03</p>
       </div>
       <div className="p-4 rounded-lg">
-        <p className="font-bold">4. Merge Two Sorted Lists</p>
-        <p>2025-05-04</p>
+        <p className="font-bold mb-1">4. Merge Two Sorted Lists</p>
+        <p className="text-xs md:text-sm">2025-05-04</p>
       </div>
       <div className="p-4 rounded-lg bg-white/10 light:bg-black/5">
-      <p className="font-bold">5. Remove Duplicates from Sorted Array</p>
-        <p>2025-05-05</p>
+      <p className="font-bold mb-1">5. Remove Duplicates from Sorted Array</p>
+        <p className="text-xs md:text-sm">2025-05-05</p>
       </div>
       <div className="p-4 rounded-lg">
-        <p className="font-bold">6. Best Time to Buy and Sell Stock</p>
-        <p>2025-05-06</p>
+        <p className="font-bold mb-1">6. Best Time to Buy and Sell Stock</p>
+        <p className="text-xs md:text-sm">2025-05-06</p>
       </div>
       <div className="p-4 rounded-lg bg-white/10 light:bg-black/5">
-      <p className="font-bold">7. Valid Anagram</p>
-        <p>2025-05-07</p>
+      <p className="font-bold mb-1">7. Valid Anagram</p>
+        <p className="text-xs md:text-sm">2025-05-07</p>
       </div>
       <div className="p-4 rounded-lg">
-        <p className="font-bold">8. Binary Search</p>
-        <p>2025-05-08</p>
+        <p className="font-bold mb-1">8. Binary Search</p>
+        <p className="text-xs md:text-sm">2025-05-08</p>
       </div>
       <div className="p-4 rounded-lg bg-white/10 light:bg-black/5">
-        <p className="font-bold">9. Contains Duplicate</p>
-        <p>2025-05-09</p>
+        <p className="font-bold mb-1">9. Contains Duplicate</p>
+        <p className="text-xs md:text-sm">2025-05-09</p>
       </div>
       <div className="p-4 rounded-lg">
-        <p className="font-bold">10. Maximum Subarray</p>
-        <p>2025-05-10</p>
+        <p className="font-bold mb-1">10. Maximum Subarray</p>
+        <p className="text-xs md:text-sm">2025-05-10</p>
       </div>
     </div>
   </>
