@@ -1,16 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
-
-type Problem = {
-  id: number;
-  title: string;
-  link: string;
-  description: string;
-  examples: {
-    input: string;
-    output: string;
-  };
-};
+import { Problem } from "../types.ts";
 
 export default function Archives() {
   const [problems, setProblems] = useState(() => {

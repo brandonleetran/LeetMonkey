@@ -1,5 +1,16 @@
 export type Theme = "dark" | "light" | "system";
 
+export type Problem = {
+  id: number;
+  title: string;
+  link: string;
+  description: string;
+  examples: {
+    input: string;
+    output: string;
+  };
+};
+
 export type AboutProps = {
     isOpen: boolean;
     onClose: () => void;

@@ -1,16 +1,6 @@
 import { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
-
-type Problem = {
-  id: number;
-  title: string;
-  link: string;
-  description: string;
-  examples: {
-    input: string;
-    output: string;
-  };
-};
+import { Problem } from "../types.ts";
 
 function Home() {
   const [problems, setProblems] = useState(() => {
