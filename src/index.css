@@ -24,6 +24,17 @@
         color: #24292f;
     }
 
+    html.light code {
+        color: #24292f;
+        background-color: color-mix(in oklab, var(--color-black) 10%, transparent);
+    }
+
+    html.dark code {
+        color: #fff;
+        background-color: rgb(64, 64, 64);
+    }
+
+
     h1, h2 {
         font-size: 1rem;
         font-weight: bold;
@@ -39,11 +50,6 @@
         font-size: .875rem;
         line-height: 1.75;
         font-weight: normal;
-    }
-
-    code {
-        color: #fff;
-        background-color: rgb(64, 64, 64);
     }
 
     @media (min-width: 768px) {
