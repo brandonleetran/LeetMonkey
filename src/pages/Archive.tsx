@@ -60,7 +60,7 @@ export default function Archives() {
     localStorage.setItem("completedProblems", JSON.stringify([]));
   }
 
-  if (!problemOfTheDay || localStorage.getItem("completedProblems") == null) {
+  if (!problemOfTheDay) {
     return (
       <>
         <div className="flex items-center gap-2 mb-4">
@@ -154,48 +154,27 @@ export default function Archives() {
           </span>
         </button>
       </div>
-      <div className="flex flex-col">
-        <div className="p-4 rounded-lg bg-white/10 light:bg-black/5">
-          <p className="font-bold mb-1">1. Two Sum</p>
-          <p className="text-xs md:text-sm">2025-05-01</p>
-        </div>
-        <div className="p-4 rounded-lg">
-          <p className="font-bold mb-1">2. Valid Palindrome</p>
-          <p className="text-xs md:text-sm">2025-05-02</p>
-        </div>
-        <div className="p-4 rounded-lg bg-white/10 light:bg-black/5">
-          <p className="font-bold mb-1">3. Valid Parenthesis</p>
-          <p className="text-xs md:text-sm">2025-05-03</p>
-        </div>
-        <div className="p-4 rounded-lg">
-          <p className="font-bold mb-1">4. Merge Two Sorted Lists</p>
-          <p className="text-xs md:text-sm">2025-05-04</p>
-        </div>
-        <div className="p-4 rounded-lg bg-white/10 light:bg-black/5">
-          <p className="font-bold mb-1">5. Remove Duplicates from Sorted Array</p>
-          <p className="text-xs md:text-sm">2025-05-05</p>
-        </div>
-        <div className="p-4 rounded-lg">
-          <p className="font-bold mb-1">6. Best Time to Buy and Sell Stock</p>
-          <p className="text-xs md:text-sm">2025-05-06</p>
-        </div>
-        <div className="p-4 rounded-lg bg-white/10 light:bg-black/5">
-          <p className="font-bold mb-1">7. Valid Anagram</p>
-          <p className="text-xs md:text-sm">2025-05-07</p>
-        </div>
-        <div className="p-4 rounded-lg">
-          <p className="font-bold mb-1">8. Binary Search</p>
-          <p className="text-xs md:text-sm">2025-05-08</p>
-        </div>
-        <div className="p-4 rounded-lg bg-white/10 light:bg-black/5">
-          <p className="font-bold mb-1">9. Contains Duplicate</p>
-          <p className="text-xs md:text-sm">2025-05-09</p>
-        </div>
-        <div className="p-4 rounded-lg">
-          <p className="font-bold mb-1">10. Maximum Subarray</p>
-          <p className="text-xs md:text-sm">2025-05-10</p>
-        </div>
-      </div>
+      <ul className="flex flex-col">
+        {problems.map((problem: Problem, index: number) => {
+          const baseDate = new Date(Date.UTC(2025, 4, 1)); // May 1, 2025
+          const currentDate = new Date(baseDate);
+          currentDate.setUTCDate(baseDate.getUTCDate() + index);
+          const dateStr = currentDate.toISOString().split("T")[0]; // YYYY-MM-DD
+
+          return (
+            <li key={problem.id} className={`flex justify-between align-center p-4 rounded-lg ${index % 2 === 0 ? "bg-white/10 light:bg-black/5" : ""}`}>
+              <div>
+                <p className="font-bold mb-1">{problem.id + ". " + problem.title}</p>
+                <p className="text-xs md:text-sm">{dateStr}</p>
+              </div>
+              {problem.id === problemOfTheDay.id || completedProblems.some(completed => completed.id === problem.id) ? (
+                <div className="flex items-center">
+                  <span className="h-3 w-3 bg-green-500 rounded-full"></span>
+                </div>) : (<></>)}
+            </li>
+          )
+        })}
+      </ul >
     </>
   );
 }
