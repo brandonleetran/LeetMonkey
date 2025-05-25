@@ -60,7 +60,7 @@ export default function Archives() {
     localStorage.setItem("completedProblems", JSON.stringify([]));
   }
 
-  if (!problemOfTheDay) {
+  if (!problemOfTheDay || localStorage.getItem("completedProblems") == null) {
     return (
       <>
         <div className="flex items-center gap-2 mb-4">
