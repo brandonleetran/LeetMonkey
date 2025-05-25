@@ -99,15 +99,15 @@ export default function Archives() {
           </button>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="h-15 md:h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
-          <div className="h-15 md:h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
-          <div className="h-15 md:h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
-          <div className="h-15 md:h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
-          <div className="h-15 md:h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
-          <div className="h-15 md:h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
-          <div className="h-15 md:h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
-          <div className="h-15 md:h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
-          <div className="h-15 md:h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
+          <div className="h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
+          <div className="h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
+          <div className="h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
+          <div className="h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
+          <div className="h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
+          <div className="h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
+          <div className="h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
+          <div className="h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
+          <div className="h-20 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
         </div>
       </>
     );
