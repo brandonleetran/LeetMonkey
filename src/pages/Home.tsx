@@ -15,7 +15,13 @@ type Problem = {
 function Home() {
   const [problems, setProblems] = useState(() => {
     const cached = localStorage.getItem("problems");
-    return cached ? JSON.parse(cached) : [];
+    try {
+      return cached ? JSON.parse(cached) : [];
+    }
+    catch (error) {
+      console.error("Error parsing cached problems:", error);
+      return [];
+    }
   });
 
   useEffect(() => {
@@ -30,7 +36,7 @@ function Home() {
       setProblems(data);
       localStorage.setItem("problems", JSON.stringify(data));
     };
-
+    
     getProblems();
   }, []);
 
