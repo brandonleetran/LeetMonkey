@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
-import { Problem } from "../types.ts";
 
 function Home() {
   const [problems, setProblems] = useState(() => {
