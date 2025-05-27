@@ -24,28 +24,34 @@ export default function Archives() {
     getProblems();
   }, []);
 
-  let problemOfTheDay: Problem | null = null;
+  let problemOfTheDay = problems.find((problem: { date: string; }) => problem.date === new Date().toISOString().split("T")[0] || null)
 
+  if (!problemOfTheDay) {
+    setProblemOfTheDayFallback();
+  }
+
+  function setProblemOfTheDayFallback() {
   // Start date is May 1st, 2025 00:00:00 UTC
-  if (problems.length) {
-    const utcDate = Date.UTC(2025, 4, 1, 0, 0, 0, 0);
+    if (problems.length) {
+      const utcDate = Date.UTC(2025, 4, 1, 0, 0, 0, 0);
 
-    // Get the current date in UTC
-    const date = new Date();
-    const utcToday = Date.UTC(
-      date.getUTCFullYear(),
-      date.getUTCMonth(),
-      date.getUTCDate()
-    );
+      // Get the current date in UTC
+      const date = new Date();
+      const utcToday = Date.UTC(
+        date.getUTCFullYear(),
+        date.getUTCMonth(),
+        date.getUTCDate()
+      );
 
-    // Calculate the difference in days
-    const MS_PER_DAY = 24 * 60 * 60 * 1000;
-    const differenceInDays = (utcToday - utcDate) / MS_PER_DAY;
+      // Calculate the difference in days
+      const MS_PER_DAY = 24 * 60 * 60 * 1000;
+      const differenceInDays = (utcToday - utcDate) / MS_PER_DAY;
 
-    // Get the index of the problem of the day
-    const index = Math.floor(differenceInDays) % problems.length;
+      // Get the index of the problem of the day
+      const index = Math.floor(differenceInDays) % problems.length;
 
-    problemOfTheDay = problems[index];
+      problemOfTheDay = problems[index];
+    }
   }
 
   let completedProblems: Problem[] = [];
@@ -150,27 +156,44 @@ export default function Archives() {
             />
           </svg>
           <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 w-max max-w-[200px] p-2 border-white/40 light:border-black/10 rounded glassy text-xs border hidden group-hover:block duration-200 z-10 whitespace-normal text-wrap break-words">
-            Track your daily typing challenges and bananas earned - Brandon
+            There will more future updates to this page - Brandon
           </span>
         </button>
       </div>
       <ul className="flex flex-col">
         {problems.map((problem: Problem, index: number) => {
-          const baseDate = new Date(Date.UTC(2025, 4, 1)); // May 1, 2025
-          const currentDate = new Date(baseDate);
-          currentDate.setUTCDate(baseDate.getUTCDate() + index);
-          const dateStr = currentDate.toISOString().split("T")[0]; // YYYY-MM-DD
+          const today = new Date();
+          const problemDate = new Date(problem.date);
+          const isCompleted = completedProblems.some(
+            (completed) => completed.id === problem.id
+          ) && problemDate < today; 
+          const isProblemOfTheDay = problem.id === problemOfTheDay.id;
+          const isMissedProblem = problemDate < today && !isCompleted;
+          const isFutureProblem = problemDate > today;
+          let statusIcon = null;
+
+          if (isCompleted) {
+            statusIcon = (<span className="h-3 w-3 bg-green-500 rounded-full" title="Completed"></span>)
+          }
+          else if (isProblemOfTheDay && !isCompleted) {
+            statusIcon = (<span className="h-3 w-3 bg-yellow-500 rounded-full" title="In Progress"></span>)
+          }
+          else if (isFutureProblem) {
+            statusIcon = (<span className="h-3 w-3 bg-gray-500 rounded-full" title="Upcoming"></span>)
+          }
+          else if (isMissedProblem) {
+            statusIcon = (<span className="h-3 w-3 bg-red-500 rounded-full" title="Missed"></span>)
+          }
 
           return (
             <li key={problem.id} className={`flex justify-between align-center p-4 rounded-lg ${index % 2 === 0 ? "bg-white/10 light:bg-black/5" : ""}`}>
               <div>
                 <p className="font-bold mb-1">{problem.id + ". " + problem.title}</p>
-                <p className="text-xs md:text-sm">{dateStr}</p>
+                <p className="text-xs md:text-sm">{problem.date}</p>
               </div>
-              {problem.id === problemOfTheDay.id || completedProblems.some(completed => completed.id === problem.id) ? (
-                <div className="flex items-center">
-                  <span className="h-3 w-3 bg-green-500 rounded-full"></span>
-                </div>) : (<></>)}
+              <div className="flex items-center">
+                {statusIcon}
+              </div>
             </li>
           )
         })}

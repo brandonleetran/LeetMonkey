@@ -30,28 +30,34 @@ function Home() {
     getProblems();
   }, []);
 
-  let problemOfTheDay: Problem | null = null;
+  let problemOfTheDay = problems.find((problem: { date: string; }) => problem.date === new Date().toISOString().split("T")[0] || null)
 
+  if (!problemOfTheDay) {
+    setProblemOfTheDayFallback();
+  }
+
+  function setProblemOfTheDayFallback() {
   // Start date is May 1st, 2025 00:00:00 UTC
-  if (problems.length) {
-    const utcDate = Date.UTC(2025, 4, 1, 0, 0, 0, 0);
+    if (problems.length) {
+      const utcDate = Date.UTC(2025, 4, 1, 0, 0, 0, 0);
 
-    // Get the current date in UTC
-    const date = new Date();
-    const utcToday = Date.UTC(
-      date.getUTCFullYear(),
-      date.getUTCMonth(),
-      date.getUTCDate()
-    );
+      // Get the current date in UTC
+      const date = new Date();
+      const utcToday = Date.UTC(
+        date.getUTCFullYear(),
+        date.getUTCMonth(),
+        date.getUTCDate()
+      );
 
-    // Calculate the difference in days
-    const MS_PER_DAY = 24 * 60 * 60 * 1000;
-    const differenceInDays = (utcToday - utcDate) / MS_PER_DAY;
+      // Calculate the difference in days
+      const MS_PER_DAY = 24 * 60 * 60 * 1000;
+      const differenceInDays = (utcToday - utcDate) / MS_PER_DAY;
 
-    // Get the index of the problem of the day
-    const index = Math.floor(differenceInDays) % problems.length;
+      // Get the index of the problem of the day
+      const index = Math.floor(differenceInDays) % problems.length;
 
-    problemOfTheDay = problems[index];
+      problemOfTheDay = problems[index];
+    }
   }
 
   if (!problemOfTheDay) {
