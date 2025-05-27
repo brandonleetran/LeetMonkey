@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
+import { Problem } from "../types";
 
 function Home() {
   const [problems, setProblems] = useState(() => {
@@ -29,8 +30,11 @@ function Home() {
     getProblems();
   }, []);
 
-  let problemOfTheDay = problems.find((problem: { date: string; }) => problem.date === new Date().toISOString().split("T")[0] || null)
-
+  const now = new Date();
+  const utcDate = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+  const todayStr = utcDate.toISOString().split("T")[0];
+  let problemOfTheDay = problems.find((problem : Problem) => problem.date === todayStr) || null;
+  
   if (!problemOfTheDay) {
     setProblemOfTheDayFallback();
   }

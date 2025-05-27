@@ -24,7 +24,10 @@ export default function Archives() {
     getProblems();
   }, []);
 
-  let problemOfTheDay = problems.find((problem: { date: string; }) => problem.date === new Date().toISOString().split("T")[0] || null)
+  const now = new Date();
+  const utcDate = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+  const todayStr = utcDate.toISOString().split("T")[0];
+  let problemOfTheDay = problems.find((problem : Problem) => problem.date === todayStr) || null;
 
   if (!problemOfTheDay) {
     setProblemOfTheDayFallback();
@@ -156,7 +159,7 @@ export default function Archives() {
             />
           </svg>
           <span role="tooltip" className="absolute left-1/2 top-full mt-2 -translate-x-1/2 w-max max-w-[200px] p-2 border-white/40 light:border-black/10 rounded glassy text-xs border hidden group-hover:block duration-200 z-10 whitespace-normal text-wrap break-words">
-            Problems are updated every day and dates are displayed in UTC datetime. There will be more future updates to this page - Brandon
+            The current UTC date is {new Date().toISOString().split("T")[0]} - Brandon
           </span>
         </button>
       </div>
