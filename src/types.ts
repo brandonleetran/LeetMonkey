@@ -9,6 +9,7 @@ export type Problem = {
     input: string;
     output: string;
   };
+  date: string;
 };
 
 export type AboutProps = {
