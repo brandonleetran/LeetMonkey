@@ -24,17 +24,17 @@ export default function Archives() {
     getProblems();
   }, []);
 
-  //let completedProblems: Problem[] = [];
-  const stored = localStorage.getItem("completedProblems");
-  if (stored) {
-    try {
-      completedProblems = JSON.parse(stored);
-    } catch (e) {
-      console.error("Failed to parse completedProblems:", e);
-    }
-  } else {
-    localStorage.setItem("completedProblems", JSON.stringify([]));
-  }
+  // let completedProblems: Problem[] = [];
+  // const stored = localStorage.getItem("completedProblems");
+  // if (stored) {
+  //   try {
+  //     completedProblems = JSON.parse(stored);
+  //   } catch (e) {
+  //     console.error("Failed to parse completedProblems:", e);
+  //   }
+  // } else {
+  //   localStorage.setItem("completedProblems", JSON.stringify([]));
+  // }
 
   if (!problems.length) {
     return (
