@@ -25,16 +25,19 @@ export default function Archives() {
   }, []);
 
   const now = new Date();
-  const utcDate = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+  const utcDate = new Date(
+    Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())
+  );
   const todayStr = utcDate.toISOString().split("T")[0];
-  let problemOfTheDay = problems.find((problem : Problem) => problem.date === todayStr) || null;
+  let problemOfTheDay =
+    problems.find((problem: Problem) => problem.date === todayStr) || null;
 
   if (!problemOfTheDay) {
     setProblemOfTheDayFallback();
   }
 
   function setProblemOfTheDayFallback() {
-  // Start date is May 1st, 2025 00:00:00 UTC
+    // Start date is May 1st, 2025 00:00:00 UTC
     if (problems.length) {
       const utcDate = Date.UTC(2025, 4, 1, 0, 0, 0, 0);
 
@@ -142,10 +145,7 @@ export default function Archives() {
           </svg>
         </NavLink>
         <h1 className="text-center">LeetMonkey Archives</h1>
-        <button
-          className="block relative group"
-          aria-label="More Information"
-        >
+        <button className="block relative group" aria-label="More Information">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -158,8 +158,12 @@ export default function Archives() {
               clipRule="evenodd"
             />
           </svg>
-          <span role="tooltip" className="absolute left-1/2 top-full mt-2 -translate-x-1/2 w-max max-w-[200px] p-2 border-white/40 light:border-black/10 rounded glassy text-xs border hidden group-hover:block duration-200 z-10 whitespace-normal text-wrap break-words">
-            The current UTC date is {new Date().toISOString().split("T")[0]} - Brandon
+          <span
+            role="tooltip"
+            className="absolute left-1/2 top-full mt-2 -translate-x-1/2 w-max max-w-[200px] p-2 border-white/40 light:border-black/10 rounded glassy text-xs border hidden group-hover:block duration-200 z-10 whitespace-normal text-wrap break-words"
+          >
+            The current UTC date is {new Date().toISOString().split("T")[0]} -
+            Brandon
           </span>
         </button>
       </div>
@@ -167,40 +171,65 @@ export default function Archives() {
         {problems.map((problem: Problem, index: number) => {
           const today = new Date();
           const problemDate = new Date(problem.date);
-          const isCompleted = completedProblems.some(
-            (completed) => completed.id === problem.id
-          ) && problemDate < today; 
+          const isCompleted =
+            completedProblems.some(
+              (completed) => completed.id === problem.id
+            ) && problemDate < today;
           const isProblemOfTheDay = problem.id === problemOfTheDay.id;
           const isMissedProblem = problemDate < today && !isCompleted;
           const isFutureProblem = problemDate > today;
           let statusIcon = null;
 
           if (isCompleted) {
-            statusIcon = (<span className="h-3 w-3 bg-green-500 rounded-full" title="Completed"></span>)
-          }
-          else if (isProblemOfTheDay && !isCompleted) {
-            statusIcon = (<span className="h-3 w-3 bg-yellow-500 rounded-full" title="In Progress"></span>)
-          }
-          else if (isFutureProblem) {
-            statusIcon = (<span className="h-3 w-3 bg-gray-500 rounded-full" title="Upcoming"></span>)
-          }
-          else if (isMissedProblem) {
-            statusIcon = (<span className="h-3 w-3 bg-red-500 rounded-full" title="Missed"></span>)
+            statusIcon = (
+              <span
+                className="h-3 w-3 bg-green-500 rounded-full"
+                title="Completed"
+              ></span>
+            );
+          } else if (isProblemOfTheDay && !isCompleted) {
+            statusIcon = (
+              <span
+                className="h-3 w-3 bg-yellow-500 rounded-full"
+                title="In Progress"
+              ></span>
+            );
+          } else if (isFutureProblem) {
+            statusIcon = (
+              <span
+                className="h-3 w-3 bg-gray-500 rounded-full"
+                title="Upcoming"
+              ></span>
+            );
+          } else if (isMissedProblem) {
+            statusIcon = (
+              <span
+                className="h-3 w-3 bg-red-500 rounded-full"
+                title="Missed"
+              ></span>
+            );
           }
 
           return (
-            <li key={problem.id} className={`flex justify-between align-center p-4 rounded-lg ${index % 2 === 0 ? "bg-white/10 light:bg-black/5" : ""}`}>
+            <li
+              key={problem.id}
+              className={`flex justify-between align-center p-4 rounded-lg ${
+                index % 2 === 0 ? "bg-white/10 light:bg-black/5" : ""
+              }`}
+            >
               <div>
-                <p className="font-bold mb-1">{problem.id + ". " + problem.title}</p>
+                <a href={problem.link}>
+                  <p className="font-bold mb-1 hover:underline">
+                    {problem.id + ". " + problem.title}
+                  </p>
+                </a>
                 <p className="text-xs md:text-sm">{problem.date}</p>
               </div>
-              <div className="flex items-center">
-                {statusIcon}
-              </div>
+              <div className="flex items-center">{statusIcon}</div>
             </li>
-          )
+          );
         })}
-      </ul >
+      </ul>
     </>
   );
 }
