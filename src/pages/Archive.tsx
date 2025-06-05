@@ -29,36 +29,9 @@ export default function Archives() {
     Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())
   );
   const todayStr = utcDate.toISOString().split("T")[0];
-  let problemOfTheDay =
-    problems.find((problem: Problem) => problem.date === todayStr) || null;
-
-  if (!problemOfTheDay) {
-    setProblemOfTheDayFallback();
-  }
-
-  function setProblemOfTheDayFallback() {
-    // Start date is May 1st, 2025 00:00:00 UTC
-    if (problems.length) {
-      const utcDate = Date.UTC(2025, 4, 1, 0, 0, 0, 0);
-
-      // Get the current date in UTC
-      const date = new Date();
-      const utcToday = Date.UTC(
-        date.getUTCFullYear(),
-        date.getUTCMonth(),
-        date.getUTCDate()
-      );
-
-      // Calculate the difference in days
-      const MS_PER_DAY = 24 * 60 * 60 * 1000;
-      const differenceInDays = (utcToday - utcDate) / MS_PER_DAY;
-
-      // Get the index of the problem of the day
-      const index = Math.floor(differenceInDays) % problems.length;
-
-      problemOfTheDay = problems[index];
-    }
-  }
+  const problemOfTheDay =
+    problems.find((problem: Problem) => problem.date === todayStr) ||
+    problems[0];
 
   let completedProblems: Problem[] = [];
   const stored = localStorage.getItem("completedProblems");

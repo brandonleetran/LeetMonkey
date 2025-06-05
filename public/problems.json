@@ -15,7 +15,8 @@
       "arrays",
       "hashing"
     ],
-    "date": "2025-05-26"
+    "date": "2025-05-26",
+    "solution": "public int[] TwoSum(int[] nums, int target) {\n    var map = new Dictionary<int, int>();\n\n    for(int i = 0; i < nums.Length; i++)\n    {\n        int difference = target - nums[i];\n\n        if (map.ContainsKey(difference))\n            return [i, map[difference]];\n\n        if (!map.ContainsKey(nums[i]))\n            map.Add(nums[i], i);\n    }\n\n    return [];\n}"
   },
   {
     "id": 2,

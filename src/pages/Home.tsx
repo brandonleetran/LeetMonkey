@@ -7,8 +7,7 @@ function Home() {
     const cached = localStorage.getItem("problems");
     try {
       return cached ? JSON.parse(cached) : [];
-    }
-    catch (error) {
+    } catch (error) {
       console.error("Error parsing cached problems:", error);
       return [];
     }
@@ -26,42 +25,18 @@ function Home() {
       setProblems(data);
       localStorage.setItem("problems", JSON.stringify(data));
     };
-    
+
     getProblems();
   }, []);
 
   const now = new Date();
-  const utcDate = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+  const utcDate = new Date(
+    Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())
+  );
   const todayStr = utcDate.toISOString().split("T")[0];
-  let problemOfTheDay = problems.find((problem : Problem) => problem.date === todayStr) || null;
-  
-  if (!problemOfTheDay) {
-    setProblemOfTheDayFallback();
-  }
-
-  function setProblemOfTheDayFallback() {
-  // Start date is May 1st, 2025 00:00:00 UTC
-    if (problems.length) {
-      const utcDate = Date.UTC(2025, 4, 1, 0, 0, 0, 0);
-
-      // Get the current date in UTC
-      const date = new Date();
-      const utcToday = Date.UTC(
-        date.getUTCFullYear(),
-        date.getUTCMonth(),
-        date.getUTCDate()
-      );
-
-      // Calculate the difference in days
-      const MS_PER_DAY = 24 * 60 * 60 * 1000;
-      const differenceInDays = (utcToday - utcDate) / MS_PER_DAY;
-
-      // Get the index of the problem of the day
-      const index = Math.floor(differenceInDays) % problems.length;
-
-      problemOfTheDay = problems[index];
-    }
-  }
+  let problemOfTheDay =
+    problems.find((problem: Problem) => problem.date === todayStr) ||
+    problems[0];
 
   if (!problemOfTheDay) {
     return (
@@ -87,23 +62,62 @@ function Home() {
 
   return (
     <>
-      <h1 className="mb-4">
-        <a
-          href={problemOfTheDay.link}
-          aria-label={problemOfTheDay.title}
-          className="hover:underline"
-        >
-          {problemOfTheDay.id + ". " + problemOfTheDay.title}
-        </a>
-      </h1>
-      <ReactMarkdown>{problemOfTheDay.description}</ReactMarkdown>
-      <h2 className="mb-2 mt-4">Example</h2>
-      <p className="mb-2">
-        Input: <code>{problemOfTheDay.examples.input}</code>
-      </p>
-      <p className="mb-6">
-        Output: <code>{problemOfTheDay.examples.output}</code>
-      </p>
+      <div className="flex flex-col gap-8 md:gap:4 md:flex-row">
+        <div className="md:max-w-[40%]">
+          <h1 className="mb-4">
+            <a
+              href={problemOfTheDay.link}
+              aria-label={problemOfTheDay.title}
+              className="hover:underline"
+            >
+              {problemOfTheDay.id + ". " + problemOfTheDay.title}
+            </a>
+          </h1>
+          <ReactMarkdown>{problemOfTheDay.description}</ReactMarkdown>
+          <h2 className="mb-2 mt-4">Example</h2>
+          <p className="mb-2">
+            Input: <code>{problemOfTheDay.examples.input}</code>
+          </p>
+          <p>
+            Output: <code>{problemOfTheDay.examples.output}</code>
+          </p>
+        </div>
+        <div className="md:w-full rounded-xl border border-white/10 light:border-black/10 bg-white/5 light:bg-black/5 backdrop-blur-sm p-4 overflow-auto">
+          <div className="flex items-center gap-2 text-xs mb-8 text-gray-400">
+            <span className="w-2 h-2 bg-red-400/80 rounded-full"></span>
+            <span className="w-2 h-2 bg-yellow-400/80 rounded-full"></span>
+            <span className="w-2 h-2 bg-green-400/80 rounded-full"></span>
+            <span className="ml-2 text-gray-500">
+              {problemOfTheDay.title.split(" ")}.cs
+            </span>
+          </div>
+          <div className="font-mono text-sm leading-snug whitespace-pre tabular-nums text-sm md:text-base">
+            {problemOfTheDay.solution
+              .split("\n")
+              .map((line: string, lineIndex: number) => {
+                return (
+                  <div
+                    key={lineIndex}
+                    id={`line ${lineIndex}`}
+                    className="flex"
+                  >
+                    {line.length === 0 ? (
+                      <span>&nbsp;</span>
+                    ) : (
+                      line
+                        .split("")
+                        .map((char, charIndex) => (
+                          <span key={charIndex}>
+                            {char === " " ? "\u00A0" : char}
+                          </span>
+                        ))
+                    )}
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+      </div>
     </>
   );
 }
