@@ -7,24 +7,18 @@ function About({ isOpen, onClose }: AboutProps) {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-40 px-6">
       <div className="glassy border border-white light:border-black/20 rounded-2xl p-5 max-w-lg w-full z-50">
-        <h2 className="text-center mb-4 font-bold">About LeetMonkey</h2>
+        <h2 className="text-center mb-4 font-bold">About LeetSharp</h2>
         <p>
-          LeetMonkey is a speed-typing playground for coding problems inspired
-          by{" "}
+          LeetSharp's purpose is to serve as a go-to, C#-centric library of{" "}
           <a
             className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer light:hover:text-black/50"
             href="https://leetcode.com/"
           >
             LeetCode
           </a>{" "}
-          and{" "}
-          <a
-            className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer light:hover:text-black/50"
-            href="https://monkeytype.com"
-          >
-            MonkeyType
-          </a>
-          . Every solution is personally written and solved by me.
+          solutions and explanations—both for your own reference and for any
+          .NET developer seeking clear, idiomatic C# examples. Every solution is
+          personally written and solved by me.
         </p>
         <div className="my-5 flex flex-col gap-1">
           <small>
@@ -46,7 +40,7 @@ function About({ isOpen, onClose }: AboutProps) {
             </a>
           </small>
           <small>
-            Want to support LeetMonkey?{" "}
+            Want to support LeetSharp?{" "}
             <a
               href="https://buymeacoffee.com/brandonleetran"
               className="underline underline-offset-3 hover:text-white transition-all duration-200 cursor-pointer light:hover:text-black/50"
@@ -56,7 +50,7 @@ function About({ isOpen, onClose }: AboutProps) {
           </small>
         </div>
         <small className="italic inline-block">
-          Note: LeetMonkey is not affiliated with LeetCode or MonkeyType.
+          Note: LeetSharp is not affiliated with LeetCode.
         </small>
         <button
           className="absolute right-0 top-0 mt-4 mr-4"

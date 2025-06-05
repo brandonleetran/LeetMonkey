@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Problem } from "../types.ts";
 
@@ -24,15 +24,6 @@ export default function Archives() {
     getProblems();
   }, []);
 
-  const now = new Date();
-  const utcDate = new Date(
-    Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())
-  );
-  const todayStr = utcDate.toISOString().split("T")[0];
-  const problemOfTheDay =
-    problems.find((problem: Problem) => problem.date === todayStr) ||
-    problems[0];
-
   let completedProblems: Problem[] = [];
   const stored = localStorage.getItem("completedProblems");
   if (stored) {
@@ -45,7 +36,7 @@ export default function Archives() {
     localStorage.setItem("completedProblems", JSON.stringify([]));
   }
 
-  if (!problemOfTheDay) {
+  if (!problems.length) {
     return (
       <>
         <div className="flex items-center gap-2 mb-4">
@@ -63,7 +54,7 @@ export default function Archives() {
               />
             </svg>
           </NavLink>
-          <h1 className="text-center">LeetMonkey Archives</h1>
+          <h1 className="text-center">LeetSharp Reference</h1>
           <button
             className="block relative group"
             aria-label="More Information"
@@ -103,21 +94,7 @@ export default function Archives() {
   return (
     <>
       <div className="flex items-center gap-2 mb-4">
-        <NavLink to="/" aria-label="Back to Home">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="size-5 md:size-6 hover:text-white transition-all duration-200 cursor-pointer light:hover:text-black/50 rotate-180"
-          >
-            <path
-              fillRule="evenodd"
-              d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </NavLink>
-        <h1 className="text-center">LeetMonkey Archives</h1>
+        <h1 className="text-center">LeetSharp Reference</h1>
         <button className="block relative group" aria-label="More Information">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -135,50 +112,40 @@ export default function Archives() {
             role="tooltip"
             className="absolute left-1/2 top-full mt-2 -translate-x-1/2 w-max max-w-[200px] p-2 border-white/40 light:border-black/10 rounded glassy text-xs border hidden group-hover:block duration-200 z-10 whitespace-normal text-wrap break-words"
           >
-            The current UTC date is {new Date().toISOString().split("T")[0]} -
-            Brandon
+            A catalog of LeetCode problems solved in C# by me. - Brandon
           </span>
         </button>
       </div>
       <ul className="flex flex-col">
         {problems.map((problem: Problem, index: number) => {
-          const today = new Date();
-          const problemDate = new Date(problem.date);
-          const isCompleted =
-            completedProblems.some(
-              (completed) => completed.id === problem.id
-            ) && problemDate < today;
-          const isProblemOfTheDay = problem.id === problemOfTheDay.id;
-          const isMissedProblem = problemDate < today && !isCompleted;
-          const isFutureProblem = problemDate > today;
-          let statusIcon = null;
+          let problemStatus = null;
+          let difficultyIcon = null;
 
-          if (isCompleted) {
-            statusIcon = (
+          if (problem.date === null) {
+            problemStatus = <p className="italic text-sm">Not completed</p>;
+          } else {
+            problemStatus = problem.date;
+          }
+
+          if (problem.difficulty === "Easy") {
+            difficultyIcon = (
               <span
-                className="h-3 w-3 bg-green-500 rounded-full"
-                title="Completed"
+                className="h-3 w-3 bg-green-500/80 rounded-full"
+                title="Easy"
               ></span>
             );
-          } else if (isProblemOfTheDay && !isCompleted) {
-            statusIcon = (
+          } else if (problem.difficulty === "Medium") {
+            difficultyIcon = (
               <span
-                className="h-3 w-3 bg-yellow-500 rounded-full"
-                title="In Progress"
+                className="h-3 w-3 bg-orange-500/80 rounded-full"
+                title="Medium"
               ></span>
             );
-          } else if (isFutureProblem) {
-            statusIcon = (
+          } else if (problem.difficulty === "Hard") {
+            difficultyIcon = (
               <span
-                className="h-3 w-3 bg-gray-500 rounded-full"
-                title="Upcoming"
-              ></span>
-            );
-          } else if (isMissedProblem) {
-            statusIcon = (
-              <span
-                className="h-3 w-3 bg-red-500 rounded-full"
-                title="Missed"
+                className="h-3 w-3 bg-red-500/80 rounded-full"
+                title="Hard"
               ></span>
             );
           }
@@ -191,14 +158,14 @@ export default function Archives() {
               }`}
             >
               <div>
-                <a href={problem.link}>
+                <Link to={`/problems/${problem.id}`}>
                   <p className="font-bold mb-1 hover:underline">
                     {problem.id + ". " + problem.title}
                   </p>
-                </a>
-                <p className="text-xs md:text-sm">{problem.date}</p>
+                </Link>
+                <p className="text-xs md:text-sm">{problemStatus}</p>
               </div>
-              <div className="flex items-center">{statusIcon}</div>
+              <div className="flex items-center">{difficultyIcon}</div>
             </li>
           );
         })}

@@ -10,6 +10,7 @@ export type Problem = {
     output: string;
   };
   date: string;
+ difficulty: "Easy" | "Medium" | "Hard";
 };
 
 export type AboutProps = {

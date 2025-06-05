@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-import Home from "./pages/Home";
-import Archive from "./pages/Archive";
+import Reference from "./pages/Reference";
+import ProblemDetail from "./pages/ProblemDetail";
 
 function App() {
   return (
     <Router>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/archive" element={<Archive />} />
+          <Route path="/" element={<Reference />} />
+          <Route path="/problems/:id" element={<ProblemDetail />} />
         </Routes>
       </Layout>
     </Router>
