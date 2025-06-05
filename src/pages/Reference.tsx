@@ -24,7 +24,7 @@ export default function Archives() {
     getProblems();
   }, []);
 
-  let completedProblems: Problem[] = [];
+  //let completedProblems: Problem[] = [];
   const stored = localStorage.getItem("completedProblems");
   if (stored) {
     try {
