@@ -36,24 +36,10 @@ export default function Archives() {
   //   localStorage.setItem("completedProblems", JSON.stringify([]));
   // }
 
-  if (!problems.length) {
+  if (problems.length) {
     return (
       <>
         <div className="flex items-center gap-2 mb-4">
-          <NavLink to="/" aria-label="Back to Home">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="size-5 md:size-6 hover:text-white transition-all duration-200 cursor-pointer light:hover:text-black/50 rotate-180"
-            >
-              <path
-                fillRule="evenodd"
-                d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </NavLink>
           <h1 className="text-center">LeetSharp Reference</h1>
           <button
             className="block relative group"
@@ -72,7 +58,7 @@ export default function Archives() {
               />
             </svg>
             <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 w-max max-w-[200px] p-2 border-white/40 light:border-black/10 rounded glassy text-xs border hidden group-hover:block duration-200 z-10 whitespace-normal text-wrap break-words">
-              Track your daily typing challenges and bananas earned - Brandon
+              A catalog of LeetCode problems solved in C# by me. - Brandon
             </span>
           </button>
         </div>
