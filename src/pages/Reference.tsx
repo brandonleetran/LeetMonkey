@@ -1,4 +1,4 @@
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Problem } from "../types.ts";
 
@@ -104,14 +104,7 @@ export default function Archives() {
       </div>
       <ul className="flex flex-col">
         {problems.map((problem: Problem, index: number) => {
-          let problemStatus = null;
           let difficultyIcon = null;
-
-          if (problem.date === null) {
-            problemStatus = <p className="italic text-sm">Not completed</p>;
-          } else {
-            problemStatus = problem.date;
-          }
 
           if (problem.difficulty === "Easy") {
             difficultyIcon = (
@@ -149,7 +142,7 @@ export default function Archives() {
                     {problem.id + ". " + problem.title}
                   </p>
                 </Link>
-                <p className="text-xs md:text-sm">{problemStatus}</p>
+                <p className="italic text-xs md:text-sm">Not completed</p>
               </div>
               <div className="flex items-center">{difficultyIcon}</div>
             </li>
