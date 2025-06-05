@@ -73,19 +73,14 @@ function ProblemDetail() {
     return (
       <>
         <div className="space-y-4 mb-4">
-          <div className="h-7 w-1/5 bg-gray-700 light:bg-black/10 rounded animate-pulse" />
-          <div className="h-7 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
-          <div className="h-7 w-full bg-gray-700  light:bg-black/10 rounded animate-pulse" />
-          <div className="h-7 w-full bg-gray-700  light:bg-black/10 rounded animate-pulse" />
-          <div className="h-7 w-1/3 bg-gray-700 light:bg-black/10 rounded animate-pulse" />
-          <div className="h-7 w-1/3 bg-gray-700  light:bg-black/10 rounded animate-pulse" />
-          <div className="h-7 w-1/3 bg-gray-700  light:bg-black/10 rounded animate-pulse" />
-          <div className="h-7 w-full bg-gray-700  light:bg-black/10 rounded animate-pulse" />
-          <div className="h-7 w-full bg-gray-700  light:bg-black/10 rounded animate-pulse" />
-          <div className="h-7 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
-          <div className="h-7 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
-          <div className="h-7 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
-          <div className="h-7 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
+          <div className="h-5 w-1/4 bg-gray-700 light:bg-black/10 rounded animate-pulse" />
+          <div className="h-5 w-full bg-gray-700 light:bg-black/10 rounded animate-pulse" />
+          <div className="h-5 w-full bg-gray-700  light:bg-black/10 rounded animate-pulse" />
+          <div className="h-5 w-full bg-gray-700  light:bg-black/10 rounded animate-pulse" />
+          <div className="h-5 w-1/4 bg-gray-700 light:bg-black/10 rounded animate-pulse" />
+          <div className="h-5 w-1/4 bg-gray-700  light:bg-black/10 rounded animate-pulse" />
+          <div className="h-5 w-1/4 bg-gray-700  light:bg-black/10 rounded animate-pulse" />
+          <div className="h-100 w-full bg-gray-700  light:bg-black/10 rounded animate-pulse" />
         </div>
       </>
     );
