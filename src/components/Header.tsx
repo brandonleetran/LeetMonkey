@@ -66,8 +66,8 @@ function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
               <img
                 src={
                   isDark
-                    ? "/leetmonkey-dark-cropped.svg"
-                    : "/leetmonkey-light-cropped.svg"
+                    ? "/leetsharp-dark.svg"
+                    : "/leetsharp-light.svg"
                 }
                 alt="LeetSharp Logo"
                 width="150"
