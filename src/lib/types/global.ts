@@ -10,8 +10,14 @@ export type Problem = {
     output: string;
   };
   date: string;
- difficulty: "Easy" | "Medium" | "Hard";
+  solution: string;
+  difficulty: "Easy" | "Medium" | "Hard";
 };
+
+export type ProblemContextType = {
+  problems: Problem[];
+  setProblems: React.Dispatch<React.SetStateAction<Problem[]>>;
+}
 
 export type AboutProps = {
     isOpen: boolean;

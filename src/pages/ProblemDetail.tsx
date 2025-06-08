@@ -1,19 +1,11 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router"
 import { Problem } from "../lib/types/global";
 import ReactMarkdown from "react-markdown";
+import { useProblemContext } from "../lib/hooks/global";
 
 function ProblemDetail() {
-  const [problems, setProblems] = useState(() => {
-    try {
-      const cached = localStorage.getItem("problems");
-      return cached ? JSON.parse(cached) : [];
-    }
-    catch (error) {
-      console.error("Error parsing cached problems:", error);
-      return [];
-    }
-  });
+  const { problems, setProblems } = useProblemContext();
 
   useEffect(() => {
     // if problems is not empty, then that means it's from the cache
@@ -47,7 +39,13 @@ function ProblemDetail() {
 
   const problemId = parseInt(params.id);
   const problem = problems.find((problem: Problem) => problem.id === problemId);
-  let problemSolution = (<p>No solution available for this problem.</p>);
+
+  // TODO: Handle case where problem is not found
+  if (!problem) {
+    return <div>404: Problem not found.</div>;
+  }
+
+  let problemSolution;
 
   if (problems && problems.length && problem && problem.solution) {
     problemSolution = problem.solution

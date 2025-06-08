@@ -1,18 +1,10 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Problem } from "../lib/types/global.ts";
+import { useProblemContext } from "../lib/hooks/global.ts";
 
 function Reference() {
-  const [problems, setProblems] = useState(() => {
-    try {
-      const cached = localStorage.getItem("problems");
-      return cached ? JSON.parse(cached) : [];
-    }
-    catch (error) {
-      console.error("Error parsing cached problems:", error);
-      return [];
-    }
-  });
+  const { problems, setProblems } = useProblemContext();
 
   useEffect(() => {
     // if problems is not empty, then that means it's from the cache
