@@ -1,34 +1,9 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 import { Problem } from "../lib/types/global.ts";
-import { useProblemContext } from "../lib/hooks/global.ts";
+import { useProblems } from "../lib/hooks/global.ts";
 
 function Reference() {
-  const { problems, setProblems } = useProblemContext();
-
-  useEffect(() => {
-    // if problems is not empty, then that means it's from the cache
-    if (problems.length) return;
-
-    async function getProblems() {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      try {
-        const response = await fetch("/problems.json");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setProblems(data);
-        localStorage.setItem("problems", JSON.stringify(data));
-      } catch (error) {
-        console.error("Failed to fetch problems:", error);
-        // TODO: set an error state here to display an error message
-      };
-    }
-
-      getProblems();
-    }, []);
+  const problems = useProblems();
 
   if (!problems.length) {
     return (
