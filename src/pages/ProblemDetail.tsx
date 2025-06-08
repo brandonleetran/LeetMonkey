@@ -1,48 +1,46 @@
 import { useParams } from "react-router"
-import { Problem } from "../lib/types/global";
 import ReactMarkdown from "react-markdown";
 import { useProblems } from "../lib/hooks/global";
 
 function ProblemDetail() {
   const problems = useProblems();
-  const params = useParams();
+  const { id } = useParams();
+  const problemId = Number(id);
+  const problem = problems.find((p) => p.id === problemId);
 
-  if (!params.id) {
-    return <div>Error: Problem ID is missing.</div>;
+  let problemSolution = (<p>No solution available for this problem.</p>)
+
+  if (problem && problem.solution) {
+    problemSolution = (
+      <>
+        {problem.solution
+          .split("\n")
+          .map((line: string, lineIndex: number) => {
+            return (
+              <div
+                key={lineIndex}
+                id={`line ${lineIndex}`}
+                className="flex"
+              >
+                {line.length === 0 ? (
+                  <span>&nbsp;</span>
+                ) : (
+                  line
+                    .split("")
+                    .map((char, charIndex) => (
+                      <span key={charIndex}>
+                        {char === " " ? "\u00A0" : char}
+                      </span>
+                    ))
+                )}
+              </div>
+            );
+          })}
+      </>
+    )
   }
 
-  const problemId = parseInt(params.id);
-  const problem = problems.find((problem: Problem) => problem.id === problemId);
-
-  let problemSolution;
-
-  if (problems && problems.length && problem && problem.solution) {
-    problemSolution = problem.solution
-      .split("\n")
-      .map((line: string, lineIndex: number) => {
-        return (
-          <div
-            key={lineIndex}
-            id={`line ${lineIndex}`}
-            className="flex"
-          >
-            {line.length === 0 ? (
-              <span>&nbsp;</span>
-            ) : (
-              line
-                .split("")
-                .map((char, charIndex) => (
-                  <span key={charIndex}>
-                    {char === " " ? "\u00A0" : char}
-                  </span>
-                ))
-            )}
-          </div>
-        );
-      })
-  }
-
-  if (!problems.length || !problems || !problem) {
+  if (!problem) {
     return (
       <>
         <div className="space-y-4 mb-4">
