@@ -1,9 +1,8 @@
 import { HeaderProps } from "../lib/types/global.ts";
 import { NavLink } from "react-router-dom";
 
-function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
-  const themes = ["system", "light", "dark"] as const;
-  const icons = {
+  const THEMES = ["system", "light", "dark"] as const;
+  const ICONS = {
     system: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -50,9 +49,10 @@ function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
     ),
   } as const;
 
+function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
   const handleTheme = () => {
-    const index = themes.indexOf(theme);
-    const nextTheme = themes[(index + 1) % themes.length];
+    const index = THEMES.indexOf(theme);
+    const nextTheme = THEMES[(index + 1) % THEMES.length];
     setTheme(nextTheme);
     console.log("handleTheme", nextTheme);
   };
@@ -119,7 +119,7 @@ function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {
                 aria-label="Toggle Theme"
                 title="Toggle Theme"
               >
-                {icons[theme]}
+                {ICONS[theme]}
               </button>
             </li>
           </ul>
