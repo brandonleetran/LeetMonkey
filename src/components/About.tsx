@@ -1,4 +1,4 @@
-import { AboutProps } from "../types";
+import { AboutProps } from "../lib/types/global";
 
 function About({ isOpen, onClose }: AboutProps) {
   if (isOpen === false) {

@@ -1,4 +1,4 @@
-import { HeaderProps } from "../types.ts";
+import { HeaderProps } from "../lib/types/global.ts";
 import { NavLink } from "react-router-dom";
 
 function Header({ onOpen, theme, setTheme, isDark }: HeaderProps) {

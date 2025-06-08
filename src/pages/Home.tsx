@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
-import { Problem } from "../types";
+import { Problem } from "../lib/types/global";
 
 function Home() {
   const [problems, setProblems] = useState(() => {

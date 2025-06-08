@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import BuyMeACoffee from "./BuyMeACoffee";
 import About from "./About";
 import { useState, useEffect } from "react";
-import { Theme, LayoutProps } from "../types.ts";
+import { Theme, LayoutProps } from "../lib/types/global.ts";
 
 function Layout({ children }: LayoutProps) {
   const [theme, setTheme] = useState<Theme | null>(null);
