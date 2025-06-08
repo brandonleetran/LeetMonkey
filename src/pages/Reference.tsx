@@ -1,40 +1,42 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Problem } from "../types.ts";
+import { Problem } from "../lib/types/global.ts";
 
-export default function Archives() {
+function Reference() {
   const [problems, setProblems] = useState(() => {
-    const cached = localStorage.getItem("problems");
-    return cached ? JSON.parse(cached) : [];
+    try {
+      const cached = localStorage.getItem("problems");
+      return cached ? JSON.parse(cached) : [];
+    }
+    catch (error) {
+      console.error("Error parsing cached problems:", error);
+      return [];
+    }
   });
 
   useEffect(() => {
     // if problems is not empty, then that means it's from the cache
     if (problems.length) return;
 
-    const getProblems = async () => {
+    async function getProblems() {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      const response = await fetch("/problems.json");
-      const data = await response.json();
-      setProblems(data);
-      localStorage.setItem("problems", JSON.stringify(data));
-    };
+      try {
+        const response = await fetch("/problems.json");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setProblems(data);
+        localStorage.setItem("problems", JSON.stringify(data));
+      } catch (error) {
+        console.error("Failed to fetch problems:", error);
+        // TODO: set an error state here to display an error message
+      };
+    }
 
-    getProblems();
-  }, []);
-
-  // let completedProblems: Problem[] = [];
-  // const stored = localStorage.getItem("completedProblems");
-  // if (stored) {
-  //   try {
-  //     completedProblems = JSON.parse(stored);
-  //   } catch (e) {
-  //     console.error("Failed to parse completedProblems:", e);
-  //   }
-  // } else {
-  //   localStorage.setItem("completedProblems", JSON.stringify([]));
-  // }
+      getProblems();
+    }, []);
 
   if (!problems.length) {
     return (
@@ -132,9 +134,8 @@ export default function Archives() {
           return (
             <li
               key={problem.id}
-              className={`flex justify-between align-center p-4 rounded-lg ${
-                index % 2 === 0 ? "bg-white/10 light:bg-black/5" : ""
-              }`}
+              className={`flex justify-between align-center p-4 rounded-lg ${index % 2 === 0 ? "bg-white/10 light:bg-black/5" : ""
+                }`}
             >
               <div>
                 <Link to={`/problems/${problem.id}`}>
@@ -152,3 +153,5 @@ export default function Archives() {
     </>
   );
 }
+
+export default Reference;

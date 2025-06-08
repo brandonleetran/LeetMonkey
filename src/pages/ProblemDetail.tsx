@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router"
-import { Problem } from "../types";
+import { Problem } from "../lib/types/global";
 import ReactMarkdown from "react-markdown";
 
 function ProblemDetail() {
-
   const [problems, setProblems] = useState(() => {
-    const cached = localStorage.getItem("problems");
     try {
+      const cached = localStorage.getItem("problems");
       return cached ? JSON.parse(cached) : [];
     }
     catch (error) {
@@ -17,18 +16,28 @@ function ProblemDetail() {
   });
 
   useEffect(() => {
+    // if problems is not empty, then that means it's from the cache
     if (problems.length) return;
-    const getProblems = async () => {
+
+    async function getProblems() {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      const response = await fetch("/problems.json");
-      const data = await response.json();
-      setProblems(data);
-      localStorage.setItem("problems", JSON.stringify(data));
+      try {
+        const response = await fetch("/problems.json");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setProblems(data);
+        localStorage.setItem("problems", JSON.stringify(data));
+      } catch (error) {
+        console.error("Failed to fetch problems:", error);
+        // TODO: set an error state here to display an error message
+      };
     }
 
-    getProblems();
-  }, []);
+      getProblems();
+    }, []);
 
   const params = useParams();
 
@@ -38,9 +47,6 @@ function ProblemDetail() {
 
   const problemId = parseInt(params.id);
   const problem = problems.find((problem: Problem) => problem.id === problemId);
-  console.log("Problem:", problem);
-
-
   let problemSolution = (<p>No solution available for this problem.</p>);
 
   if (problems && problems.length && problem && problem.solution) {
@@ -90,17 +96,24 @@ function ProblemDetail() {
     <>
       <div className="flex flex-col gap-8 md:gap:4 md:flex-row">
         <div className="md:max-w-[40%]">
-          <h1 className="mb-4">
-            <a
-              href={problem.link}
-              aria-label={problem.title}
-              className="hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {problem.id + ". " + problem.title}
-            </a>
-          </h1>
+          <div className="flex justify-between items-center">
+            <h1 className="mb-4">
+              <a
+                href={problem.link}
+                aria-label={problem.title}
+                className="hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {problem.id + ". " + problem.title}
+              </a>
+            </h1>
+            <div>
+              <button>
+                Mark as Reviewed
+              </button>
+            </div>
+          </div>
           <ReactMarkdown>{problem.description}</ReactMarkdown>
           <h2 className="mb-2 mt-4">Example</h2>
           <p className="mb-2">
